@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="STLHub:war">
+    <output-path>$PROJECT_DIR$/STLHub/target</output-path>
+    <root id="archive" name="STLHub-1.0.war">
+      <element id="artifact" artifact-name="STLHub:war exploded" />
+    </root>
+  </artifact>
+</component>
