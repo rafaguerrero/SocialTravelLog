@@ -1,0 +1,1 @@
+<h1>Social Travel Log Homepage</h1>

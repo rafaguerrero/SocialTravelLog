@@ -24,11 +24,14 @@
         <processorPath useClasspath="true" />
         <module name="STLDomain" />
         <module name="STLHub" />
+        <module name="STLWeb" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="SocialTravelLog" target="1.6" />
+      <module name="STLDomain" target="1.6" />
       <module name="STLHub" target="1.6" />
+      <module name="STLWeb" target="1.6" />
     </bytecodeTargetLevel>
   </component>
 </project>

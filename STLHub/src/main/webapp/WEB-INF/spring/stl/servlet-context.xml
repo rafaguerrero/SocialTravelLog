@@ -43,30 +43,24 @@
     </bean>
 
     <!-- MongoDB conection -->
-    <!--<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">-->
-        <!--<constructor-arg ref="mongo"/>-->
-        <!--<constructor-arg name="databaseName" value="glippy"/>-->
-        <!--<constructor-arg name="userCredentials" ref="mongoCredentials"/>-->
+    <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+        <constructor-arg ref="mongo"/>
+        <constructor-arg name="databaseName" value="stl"/>
 
-        <!--<property name="writeConcern">-->
-            <!--<util:constant static-field="com.mongodb.WriteConcern.SAFE"/>-->
-        <!--</property>-->
+        <property name="writeConcern">
+            <util:constant static-field="com.mongodb.WriteConcern.SAFE"/>
+        </property>
 
-        <!--<property name="writeResultChecking" value="EXCEPTION"/>-->
-    <!--</bean>-->
+        <property name="writeResultChecking" value="EXCEPTION"/>
+    </bean>
 
-    <!--<bean id="mongoCredentials" class="org.springframework.data.authentication.UserCredentials">-->
-        <!--<constructor-arg name="username" value="oscardom" />-->
-        <!--<constructor-arg name="password" value="123456" />-->
-    <!--</bean>-->
+    <mongo:mongo id="mongo" replica-set="ds057000.mongolab.com:57000" >
+        <mongo:options auto-connect-retry="true"
+                       connections-per-host="30"
+                       threads-allowed-to-block-for-connection-multiplier="5" />
+    </mongo:mongo>
+    <mongo:auditing/>
 
-    <!--<mongo:mongo id="mongo" replica-set="ds057000.mongolab.com:57000" >-->
-        <!--<mongo:options auto-connect-retry="true"-->
-                       <!--connections-per-host="30"-->
-                       <!--threads-allowed-to-block-for-connection-multiplier="5" />-->
-    <!--</mongo:mongo>-->
-    <!--<mongo:auditing/>-->
-
-    <!--&lt;!&ndash; Use this post processor to translate any MongoExceptions thrown in @Repository annotated classes &ndash;&gt;-->
-    <!--<bean class="org.springframework.data.mongodb.core.MongoExceptionTranslator"/>-->
+    <!-- Use this post processor to translate any MongoExceptions thrown in @Repository annotated classes -->
+    <bean class="org.springframework.data.mongodb.core.MongoExceptionTranslator"/>
 </beans>
