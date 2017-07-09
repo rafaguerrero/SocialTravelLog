@@ -1,0 +1,9 @@
+{
+  "title" : "Second Article",
+  "body" : "<p>asdfasdfasdf</p>",
+  "author" : {
+    "userId" : "rguerrero",
+    "name" : "Rafa Guerrero"
+  },
+  "categories" : ["article", "first", "test"]
+}

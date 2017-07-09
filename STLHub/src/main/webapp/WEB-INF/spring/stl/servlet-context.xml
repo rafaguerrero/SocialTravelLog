@@ -17,6 +17,7 @@
     <context:component-scan base-package="com.stl" annotation-config="true"/>
 
     <mongo:repositories base-package="com.stl.domain"/>
+    <mongo:auditing/>
 
     <!-- MVC View resolvers -->
     <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
@@ -44,7 +45,11 @@
 
     <!-- MongoDB conection -->
     <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
-        <constructor-arg ref="mongo"/>
+        <constructor-arg>
+            <bean class="org.springframework.data.mongodb.core.MongoFactoryBean">
+                <property name="host" value="127.0.0.1"/>
+            </bean>
+        </constructor-arg>
         <constructor-arg name="databaseName" value="stl"/>
 
         <property name="writeConcern">
@@ -53,13 +58,6 @@
 
         <property name="writeResultChecking" value="EXCEPTION"/>
     </bean>
-
-    <mongo:mongo id="mongo" replica-set="ds057000.mongolab.com:57000" >
-        <mongo:options auto-connect-retry="true"
-                       connections-per-host="30"
-                       threads-allowed-to-block-for-connection-multiplier="5" />
-    </mongo:mongo>
-    <mongo:auditing/>
 
     <!-- Use this post processor to translate any MongoExceptions thrown in @Repository annotated classes -->
     <bean class="org.springframework.data.mongodb.core.MongoExceptionTranslator"/>
