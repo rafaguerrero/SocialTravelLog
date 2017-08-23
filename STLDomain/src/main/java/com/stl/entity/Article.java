@@ -1,9 +1,12 @@
 package com.stl.entity;
 
+import com.stl.utils.UrlUtils;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.Date;
 import java.util.List;
 
 @Document
@@ -11,19 +14,17 @@ public class Article {
     @Id
     protected String id;
 
-    public Article() {}
-    public Article(String title, String body) {
-        this.title = title;
-        this.body = body;
-    }
-
     @DBRef
     private Author author;
 
+    @Indexed(unique = true)
+    private String url;
+
     private String title;
     private String body;
-
-    private List<String> categories;
+    private List<String> tags;
+    private Date creationTime;
+    private Date lastModificationTime;
 
     public String getId() {
         return id;
@@ -39,6 +40,7 @@ public class Article {
 
     public void setAuthor(Author author) {
         this.author = author;
+        generateUrl();
     }
 
     public String getTitle() {
@@ -47,6 +49,7 @@ public class Article {
 
     public void setTitle(String title) {
         this.title = title;
+        generateUrl();
     }
 
     public String getBody() {
@@ -57,11 +60,41 @@ public class Article {
         this.body = body;
     }
 
-    public List<String> getCategories() {
-        return categories;
+    public List<String> getTags() {
+        return tags;
     }
 
-    public void setCategories(List<String> categories) {
-        this.categories = categories;
+    public void setTags(List<String> tags) {
+        this.tags = tags;
+    }
+
+    public String getUrl() {
+        if(this.url == null) {
+            throw new RuntimeException("The URL wasn't generated properly");
+        }
+
+        return url;
+    }
+
+    private void generateUrl() {
+        if(this.url == null && this.author != null && this.title != null) {
+            this.url = UrlUtils.generateUrl(this.title, this.author.getUserId());
+        }
+    }
+
+    public Date getCreationTime() {
+        return creationTime;
+    }
+
+    public void setCreationTime(Date creationTime) {
+        this.creationTime = creationTime;
+    }
+
+    public Date getLastModificationTime() {
+        return lastModificationTime;
+    }
+
+    public void setLastModificationTime(Date lastModificationTime) {
+        this.lastModificationTime = lastModificationTime;
     }
 }

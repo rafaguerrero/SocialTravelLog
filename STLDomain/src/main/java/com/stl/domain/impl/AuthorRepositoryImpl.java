@@ -4,7 +4,9 @@ import com.stl.domain.AuthorRepository;
 import com.stl.entity.Article;
 import com.stl.entity.Author;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.Assert;
 
@@ -15,7 +17,6 @@ import static org.springframework.data.mongodb.core.query.Query.query;
 
 @Repository
 public class AuthorRepositoryImpl implements AuthorRepository {
-
     @Autowired
     private MongoTemplate mongoTemplate;
 

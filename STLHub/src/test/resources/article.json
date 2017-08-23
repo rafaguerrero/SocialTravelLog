@@ -1,9 +1,6 @@
 {
-  "title" : "Second Article",
-  "body" : "<p>asdfasdfasdf</p>",
-  "author" : {
-    "userId" : "rguerrero",
-    "name" : "Rafa Guerrero"
-  },
-  "categories" : ["article", "first", "test"]
+  "title" : "This is my second article",
+  "body" : "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nec justo et quam pretium mattis. Praesent a sagittis eros. Maecenas risus urna, facilisis vel risus in, maximus venenatis tortor. Integer porta, nisi a vestibulum mattis, velit leo imperdiet lectus, et efficitur mauris neque et elit. Donec sapien eros, aliquam dignissim rhoncus vel, sodales non nulla. Donec porta dictum eros at commodo. Phasellus ullamcorper volutpat bibendum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed aliquet commodo quam id tincidunt. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In magna ipsum, ultrices ut interdum vitae, mattis vitae magna. Ut ultricies tellus eget erat hendrerit sodales.</p>",
+  "author" : { "userId" : "laldana" },
+  "tags" : ["article", "second", "test"]
 }

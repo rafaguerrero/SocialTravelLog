@@ -13,6 +13,9 @@
           <element id="archive" name="STLWeb-1.0.jar">
             <element id="module-output" name="STLWeb" />
           </element>
+          <element id="archive" name="STLDB-1.0.jar">
+            <element id="module-output" name="STLDB" />
+          </element>
           <element id="library" level="project" name="Maven: ch.qos.logback:logback-classic:1.1.2" />
           <element id="library" level="project" name="Maven: ch.qos.logback:logback-access:1.1.2" />
           <element id="library" level="project" name="Maven: ch.qos.logback:logback-core:1.1.2" />

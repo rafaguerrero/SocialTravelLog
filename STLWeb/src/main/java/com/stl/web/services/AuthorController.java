@@ -1,5 +1,7 @@
 package com.stl.web.services;
 
+import com.stl.db.ArticleDB;
+import com.stl.db.AuthorDB;
 import com.stl.domain.ArticleRepository;
 import com.stl.domain.AuthorRepository;
 import com.stl.entity.Article;
@@ -20,18 +22,19 @@ import java.util.List;
 public class AuthorController {
 
     @Autowired
-    private ArticleRepository articleRepository;
+    private AuthorDB authorDB;
 
     @Autowired
-    private AuthorRepository authorRepository;
+    private ArticleDB articleDB;
 
-    @RequestMapping(value = "/save", method = RequestMethod.POST)
+
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     public void createAuthor(@RequestBody Author author, ModelMap model) {
-        authorRepository.save(author);
+        authorDB.save(author);
     }
 
-    @RequestMapping(value = "/save", method = RequestMethod.GET)
+    @RequestMapping(value = "/create", method = RequestMethod.GET)
     public String createAuthorForm() {
         return "/author/create";
     }
@@ -42,17 +45,18 @@ public class AuthorController {
                                     HttpServletResponse response) {
         ModelAndView mav = new ModelAndView();
 
-        Author author = authorRepository.findByUserId(userId);
+        Author author = authorDB.getByUserId(userId);
 
         if(author != null) {
-            List<Article> article = articleRepository.findByAuthor(author);
+            List<Article> article = articleDB.getByAuthor(author);
 
             mav.addObject("author", author);
             mav.addObject("articles", article);
             mav.setViewName("/author/page");
+        } else {
+            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
         }
 
-        response.setStatus(HttpServletResponse.SC_NOT_FOUND);
         return mav;
     }
 }

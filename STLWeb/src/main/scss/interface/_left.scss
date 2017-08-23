@@ -1,0 +1,11 @@
+/**
+ * Created by rafaelguerreroclemente
+ */
+
+.leftUiComponent {
+  top: $topUiComponentHeight;
+  left: 0;
+  width: $leftUiComponentWidth;
+  height: 100%;
+  border-right: 1px solid black;
+}

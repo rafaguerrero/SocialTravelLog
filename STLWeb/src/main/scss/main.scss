@@ -2,10 +2,11 @@
  * Created by rafaelguerreroclemente
  */
 
+@import "interface/_interface.scss";
+
 body {
   display: block;
-  width: 100%;
   margin:0px;
   padding:0px;
-  background-color: blue;
+  background-color: #eee;
 }

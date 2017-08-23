@@ -1,0 +1,14 @@
+/**
+ * Created by rafaelguerreroclemente
+ */
+
+@import "_variables.scss";
+@import "_content.scss";
+@import "_top.scss";
+@import "_left.scss";
+@import "_right.scss";
+
+.uiComponent {
+  position: fixed;
+  z-index: 1;
+}

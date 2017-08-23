@@ -9,6 +9,8 @@ import java.util.List;
 
 
 public interface ArticleRepository {
+    List<Article> findLatestByCreationDate();
     List<Article> findByAuthor(Author author);
+    Article findByUrl(String url);
     Article save(Article article);
 }

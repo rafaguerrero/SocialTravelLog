@@ -23,7 +23,7 @@ module.exports = {
 		dest: dest + 'js'
 	},
 	sass: {
-		source: src + 'scss/**/*.scss',
+		source: src + 'scss/*.scss',
 		dest: dest + 'css'
 	},
 	libsCss: {

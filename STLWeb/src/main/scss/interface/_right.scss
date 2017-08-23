@@ -1,0 +1,19 @@
+/**
+ * Created by rafaelguerreroclemente
+ */
+
+.rightUiComponent {
+  top: $topUiComponentHeight;
+  right: 0;
+  width: $rightUiComponentHeight;
+  height: 100%;
+
+  &__ad {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 160px;
+    height: 600px;
+    background-color: green;
+  }
+}

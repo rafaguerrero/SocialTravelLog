@@ -1,10 +1,7 @@
+<%@taglib prefix="interface" tagdir="/WEB-INF/tags/interface" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<!DOCTYPE html>
-<html lang="en-US">
-<body>
-    <jsp:include page="../interface/menu.jsp"/>
-
+<interface:body className="article article--creation">
     <form action="/hub/article/save" method="post">
         Title:<br>
         <input type="text" name="title" value="Title"><br>
@@ -14,5 +11,4 @@
 
         <input type="submit" value="Submit">
     </form>
-</body>
-</html>
+</interface:body>
