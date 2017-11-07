@@ -1,8 +1,5 @@
-
-
-
 <div class="uiComponent topUiComponent">
-    <img class="topUiComponent__logo" src="/images/logo.png"/>
+    <img class="topUiComponent__logo" src="/statics/images/logo.png"/>
 
     <div class="topUiComponent__search"></div>
 

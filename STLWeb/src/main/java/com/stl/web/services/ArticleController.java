@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 @Controller
 @RequestMapping(value = "/article")
 public class ArticleController {
@@ -25,20 +28,25 @@ public class ArticleController {
     @Autowired
     private ArticleDB articleDB;
 
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
-    @ResponseStatus(HttpStatus.CREATED)
-    public void createItem(@RequestBody Article article, ModelMap model) {
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public void saveArticle(@RequestBody Article article,
+                            HttpServletRequest request,
+                            HttpServletResponse response) {
 
-        // Remove when article creation is complete
         Author author = authorDB.getByUserId(article.getAuthor().getUserId());
-        article.setAuthor(author);
-        // ---------------
 
-        articleDB.create(article);
+        if(author != null) {
+            article.setAuthor(author);
+            articleDB.create(article);
+
+            response.setStatus(HttpServletResponse.SC_CREATED);
+        } else {
+            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+        }
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
-    public String createItemForm() {
+    public String createArticle() {
         return "/article/create";
     }
 }

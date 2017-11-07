@@ -18,13 +18,9 @@
 <!DOCTYPE html>
 <html lang="en-US">
     <head>
-        <script src="/js/main.js" async></script>
-        <link href="/css/main.css" rel="stylesheet"/>
-
-
-        <link href="/css/homepage.css" rel="stylesheet"/>
-
-
+        <script src="/statics/js/main.js" async></script>
+        <link href="/statics/css/main.css" rel="stylesheet"/>
+        <link href="/statics/css/homepage.css" rel="stylesheet"/>
     </head>
 
     <body class="${className}">

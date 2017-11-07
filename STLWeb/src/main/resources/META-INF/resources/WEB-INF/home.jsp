@@ -7,7 +7,7 @@
             <h1>${article.title}</h1>
             <div class="article__metadata">
                 <div class="article__metadata__author">
-                    By <a href="/hub/author/${article.author.userId}" target="_self">${article.author.name}</a>
+                    By <a href="/author/${article.author.userId}" target="_self">${article.author.name}</a>
                 </div>
                 <div class="article__metadata__author">
                     Tags:
