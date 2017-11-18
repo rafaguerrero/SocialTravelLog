@@ -52,13 +52,13 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-	var _componentsArticleCreation = __webpack_require__(1);
+	var _componentsFormPost = __webpack_require__(1);
 
-	var _componentsArticleCreation2 = _interopRequireDefault(_componentsArticleCreation);
+	var _componentsFormPost2 = _interopRequireDefault(_componentsFormPost);
 
 	function main() {
-	  var articleCreation = document.querySelector(".articleCreation");
-	  !!articleCreation && new _componentsArticleCreation2["default"](articleCreation);
+	  var formPost = document.querySelector(".stl-form-post");
+	  !!formPost && new _componentsFormPost2["default"](formPost);
 	}
 
 	main();
@@ -87,61 +87,73 @@
 
 	var _utilsRequestUtils2 = _interopRequireDefault(_utilsRequestUtils);
 
-	var CREATION_URL = "/hub/article/save";
-
 	var getDataFromForm = function getDataFromForm(form) {
-	    var title = form.querySelector(".articleCreation__form__title"),
-	        author = form.querySelector(".articleCreation__form__author"),
-	        body = form.querySelector(".articleCreation__form__body");
+	    var formData = new FormData(form),
+	        result = {};
 
-	    var data = {
-	        "title": title.value,
-	        "body": body.value,
-	        "author": { "userId": author.value }
-	    };
+	    var _iteratorNormalCompletion = true;
+	    var _didIteratorError = false;
+	    var _iteratorError = undefined;
 
-	    return JSON.stringify(data);
-	};
+	    try {
+	        for (var _iterator = formData.entries()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+	            var entry = _step.value;
 
-	var ArticleCreation = (function () {
-	    function ArticleCreation(page) {
-	        _classCallCheck(this, ArticleCreation);
-
-	        this.page = page;
-	        this.main = page.querySelector(".articleCreation__main");
-	        this.ok = page.querySelector(".articleCreation__ok");
-	        this.error = page.querySelector(".articleCreation__error");
-
-	        this.form = page.querySelector(".articleCreation__form");
-	        this.form.addEventListener("submit", this.create.bind(this));
+	            result[entry[0]] = entry[1];
+	        }
+	    } catch (err) {
+	        _didIteratorError = true;
+	        _iteratorError = err;
+	    } finally {
+	        try {
+	            if (!_iteratorNormalCompletion && _iterator["return"]) {
+	                _iterator["return"]();
+	            }
+	        } finally {
+	            if (_didIteratorError) {
+	                throw _iteratorError;
+	            }
+	        }
 	    }
 
-	    //module.exports = ArticleCreationForm;
+	    return JSON.stringify(result);
+	};
 
-	    _createClass(ArticleCreation, [{
-	        key: "create",
-	        value: function create(event) {
-	            var _this = this;
+	var getApiLocation = function getApiLocation() {
+	    var location = window.location.href;
 
+	    if (location.indexOf(".html") >= 0) {
+	        return location.replace(".html", ".json");
+	    }
+
+	    return location + ".json";
+	};
+
+	var FormPost = (function () {
+	    function FormPost(form) {
+	        _classCallCheck(this, FormPost);
+
+	        this.form = form;
+	        this.form.addEventListener("submit", this.submit.bind(this));
+	    }
+
+	    _createClass(FormPost, [{
+	        key: "submit",
+	        value: function submit(event) {
 	            event.preventDefault();
 
-	            this.page.classList.add("loading");
-	            this.main.classList.add("hide");
-
-	            _utilsRequestUtils2["default"].post(CREATION_URL, getDataFromForm(this.form), function () {
-	                _this.page.classList.remove("loading");
-	                _this.ok.classList.remove("hide");
-	            }, function () {
-	                _this.page.classList.remove("loading");
-	                _this.error.classList.remove("hide");
+	            _utilsRequestUtils2["default"].post(getApiLocation(), getDataFromForm(this.form)).then(function () {
+	                alert("Creation Successfull");
+	            })["catch"](function () {
+	                alert("There was an error");
 	            });
 	        }
 	    }]);
 
-	    return ArticleCreation;
+	    return FormPost;
 	})();
 
-	exports["default"] = ArticleCreation;
+	exports["default"] = FormPost;
 	module.exports = exports["default"];
 
 /***/ }),
@@ -155,26 +167,27 @@
 	"use strict";
 
 	module.exports = {
-	    post: function post(url, data, successCallback, errorCallback) {
-	        var request = new XMLHttpRequest();
-	        request.timeout = 10000;
-	        request.open("POST", url);
-	        request.setRequestHeader("Content-Type", "application/json");
+	    post: function post(url, data) {
+	        return new Promise(function (resolve, reject) {
+	            var request = new XMLHttpRequest();
+	            request.timeout = 10000;
+	            request.open("POST", url);
+	            request.setRequestHeader("Content-Type", "application/json");
 
-	        request.onreadystatechange = function () {
-	            if (request.readyState === 4) {
-	                var responseHeaders = request.getAllResponseHeaders();
+	            request.onreadystatechange = function () {
+	                if (request.readyState === 4) {
+	                    var responseHeaders = request.getAllResponseHeaders();
 
-	                if (request.status >= 200 && request.status < 300) {
-	                    successCallback && successCallback(request.responseText, responseHeaders);
-	                } else {
-	                    errorCallback && errorCallback(request, responseHeaders);
+	                    if (request.status >= 200 && request.status < 300) {
+	                        resolve(request.responseText, responseHeaders);
+	                    } else {
+	                        reject(request, responseHeaders);
+	                    }
 	                }
-	            }
-	        };
+	            };
 
-	        request.send(data);
-	        return request;
+	            request.send(data);
+	        });
 	    }
 	};
 

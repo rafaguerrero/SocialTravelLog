@@ -70,7 +70,7 @@
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/STLHub/target/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/STLHub/target/webapp/META-INF/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="STLHub/web/Web" />
     </root>

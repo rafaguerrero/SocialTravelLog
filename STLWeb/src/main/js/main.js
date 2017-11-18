@@ -2,11 +2,11 @@
  * Created by rafaelguerreroclemente on 15/7/17.
  */
 
-import ArticleCreation from 'components/ArticleCreation';
+import FormPost from 'components/FormPost';
 
 function main() {
-    let articleCreation = document.querySelector(".articleCreation");
-    !!articleCreation && (new ArticleCreation(articleCreation));
+    let formPost = document.querySelector(".stl-form-post");
+    !!formPost && (new FormPost(formPost));
 }
 
 main();
