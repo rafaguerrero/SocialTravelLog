@@ -1,0 +1,71 @@
+#!/bin/bash
+
+system() {
+    echo "############################### CONFIGURING ENV ###############################"
+    current_path="$PWD"
+
+    echo "\n\n## STL" >> ~/.bash_profile
+    echo "export STL_HOME=$current_path" >> ~/.bash_profile
+    echo 'source $STL_HOME/.conf/bin/stl-bash_profile' >> ~/.bash_profile
+}
+
+nginx() {
+    echo "############################### NGINX ###############################"
+
+    mkdir $STL_HOME/.nginx
+
+    for file in $STL_HOME/.conf/nginx/*.conf
+    do
+      echo "Processing $file ..."
+      fileName=$(basename $file)
+      sed -e 's|$STL_HOME|'$STL_HOME'|' "$file" > $STL_HOME/.nginx/$fileName
+    done
+
+    for file in $STL_HOME/.conf/nginx/*.types
+    do
+      echo "Processing $file ..."
+      fileName=$(basename $file)
+      sed -e 's|$STL_HOME|'$STL_HOME'|' "$file" > $STL_HOME/.nginx/$fileName
+    done
+
+    sudo nginx -s reload -c $STL_HOME/.nginx/nginx.conf
+}
+
+usage() {
+read -d '' HELP <<"BLOCK"
+\\033[0;37mHELP \\033[0m
+   ~> stl-env [options]
+
+\\033[0;37mDESCRIPTION \\033[0m
+   STL
+
+\\033[0;37mOPTIONS \\033[0m
+   -h     Help
+   -n     Nginx
+   -s     System Configuration
+
+BLOCK
+echo -e "$HELP"
+}
+
+
+while getopts ":v:snh" OPTION
+do
+     case $OPTION in
+        s)
+            system
+            ;;
+
+        n)
+            nginx
+            ;;
+
+        h)
+            help
+            exit 1
+            ;;
+
+     esac
+done
+
+echo "############################### DONE ###############################"

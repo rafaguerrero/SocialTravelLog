@@ -12,7 +12,7 @@
  * from Marfeel Solutions SL.
  */
 
-var dest = '../src/main/resources/META-INF/resources/',
+var dest = '../src/main/resources/',
 	src = '../src/main/';
 
 module.exports = {

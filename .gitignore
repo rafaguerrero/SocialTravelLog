@@ -1,0 +1,6 @@
+## NGINX
+.nginx/*
+
+## COMPILED FILES
+STLFrontend/src/main/resources/css/*
+STLFrontend/src/main/resources/js/*

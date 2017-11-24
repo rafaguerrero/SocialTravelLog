@@ -1,0 +1,17 @@
+#!/bin/bash
+
+all() {
+    echo "############################### COMPILING ALL ###############################"
+    gulp --gulpfile $STL_HOME/STLFrontend/build/gulpfile.js
+    echo "############################### DONE ###############################"
+}
+
+while getopts ":v:a" OPTION
+do
+     case $OPTION in
+        a)
+            all
+            ;;
+
+     esac
+done

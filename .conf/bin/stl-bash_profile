@@ -1,0 +1,6 @@
+#!/bin/bash
+
+export PATH=$STL_HOME/.conf/bin:$PATH
+
+## STL
+alias stl='cd $STL_HOME'
