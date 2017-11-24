@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
-    <file url="file://$PROJECT_DIR$/STLWeb/build" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/STLWeb/build/build.js" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/STLWeb/build/config.rb" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/STLWeb/build/gulp" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/STLWeb/build/node_modules" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/STLWeb/build/node_modules/require-dir" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/STLWeb/build/r.js" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/STLWeb/build/webpack.config.js" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/STLWeb/src/main/external" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/STLFrontend/build" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/STLFrontend/build/build.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/STLFrontend/build/config.rb" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/STLFrontend/build/gulp" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/STLFrontend/build/node_modules" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/STLFrontend/build/node_modules/require-dir" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/STLFrontend/build/r.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/STLFrontend/build/webpack.config.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/STLFrontend/src/main/external" charset="UTF-8" />
   </component>
 </project>

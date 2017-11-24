@@ -15,6 +15,7 @@
         <module>STLHub</module>
         <module>STLWeb</module>
         <module>STLDB</module>
+        <module>STLFrontend</module>
     </modules>
 
     <properties>

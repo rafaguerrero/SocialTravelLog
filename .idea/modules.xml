@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/STLDB/STLDB.iml" filepath="$PROJECT_DIR$/STLDB/STLDB.iml" />
       <module fileurl="file://$PROJECT_DIR$/STLDomain/STLDomain.iml" filepath="$PROJECT_DIR$/STLDomain/STLDomain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/STLFrontend/STLFrontend.iml" filepath="$PROJECT_DIR$/STLFrontend/STLFrontend.iml" />
       <module fileurl="file://$PROJECT_DIR$/STLHub/STLHub.iml" filepath="$PROJECT_DIR$/STLHub/STLHub.iml" />
       <module fileurl="file://$PROJECT_DIR$/STLWeb/STLWeb.iml" filepath="$PROJECT_DIR$/STLWeb/STLWeb.iml" />
       <module fileurl="file://$PROJECT_DIR$/SocialTravelLog.iml" filepath="$PROJECT_DIR$/SocialTravelLog.iml" />
