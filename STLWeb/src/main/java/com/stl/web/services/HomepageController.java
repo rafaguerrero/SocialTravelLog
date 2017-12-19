@@ -18,7 +18,7 @@ public class HomepageController {
         ModelAndView mav = new ModelAndView();
 
         mav.addObject("articles", articleDB.getLatestArticles());
-        mav.setViewName("/home");
+        mav.setViewName("/views/home");
 
 
         return mav;

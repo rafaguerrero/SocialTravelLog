@@ -10,7 +10,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.List;
 
 @Controller
 public class PageControler {
@@ -30,7 +29,7 @@ public class PageControler {
         if(article != null) {
             mav.addObject("article", article);
 
-            mav.setViewName("/article/page");
+            mav.setViewName("/views/article/page");
         } else {
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
         }
