@@ -31,6 +31,11 @@ nginx() {
     sudo nginx -s reload -c $STL_HOME/.nginx/nginx.conf
 }
 
+links() {
+    ln -sfn $STL_HOME/STLFrontend/src/main/views $STL_HOME/STLHub/src/main/webapp/WEB-INF
+    ln -sfn $STL_HOME/STLFrontend/src/main/tags $STL_HOME/STLHub/src/main/webapp/WEB-INF
+}
+
 usage() {
 read -d '' HELP <<"BLOCK"
 \\033[0;37mHELP \\033[0m
@@ -49,7 +54,7 @@ echo -e "$HELP"
 }
 
 
-while getopts ":v:snh" OPTION
+while getopts ":v:snhl" OPTION
 do
      case $OPTION in
         s)
@@ -58,6 +63,10 @@ do
 
         n)
             nginx
+            ;;
+
+        l)
+            links
             ;;
 
         h)
