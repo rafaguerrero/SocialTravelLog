@@ -44,7 +44,7 @@ public class AuthorController {
 
     @RequestMapping(value = {"", "/"}, method = RequestMethod.GET)
     public String createAuthorForm() {
-        return "/author/create";
+        return "/views/author/create";
     }
 
     @RequestMapping(value = "/{userId}", method = RequestMethod.GET)
