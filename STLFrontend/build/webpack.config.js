@@ -19,13 +19,7 @@ var libsRoot = projectRoot + "/../external/js";
 
 module.exports = {
     resolve: {
-        alias: {
-            "angular": libsRoot + '/angular.min',
-            "angular-animate": libsRoot + "/angular-animate.min",
-            "angular-bootstrap": libsRoot + "/ui-bootstrap.min",
-            "angular-bootstrap-tpls": libsRoot + "/ui-bootstrap-tpls.min",
-            "angular-bootstrap-datetimepicker": libsRoot + "/datetime-picker"
-        },
+        alias: {},
         "root": projectRoot
     },
     resolveLoader: {
@@ -33,8 +27,13 @@ module.exports = {
     },
     module: {
         loaders: [
-            { test: /\.js$/, exclude: /node_modules|webapp\/resources/, loader: "babel-loader"},
-            { test: /[\/]angular\.min\.js$/, loader: "exports?window.angular" }
+            {
+                test: /\.html$/,
+                use: [
+                    { loader: 'babel-loader' },
+                    { loader: 'polymer-webpack-loader' }
+                ]
+            }
         ]
     },
     output: {
