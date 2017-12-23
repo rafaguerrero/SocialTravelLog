@@ -1,5 +1,5 @@
 /**
- * Created by rafaelguerreroclemente on 15/7/17.
+ * Created by rafaelguerreroclemente
  */
 
-//import '../html/custom-element.html'
+import '../html/my-element.html'

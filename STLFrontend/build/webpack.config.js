@@ -13,28 +13,21 @@
  */
 
 var path = require('path');
-
 var projectRoot = __dirname + "/../src/main/js/";
-var libsRoot = projectRoot + "/../external/js";
 
 module.exports = {
     resolve: {
         alias: {},
-        "root": projectRoot
+        "root": projectRoot,
+        modules: [
+            path.resolve(__dirname, 'node_modules')
+        ]
     },
     resolveLoader: {
         root: __dirname + "/node_modules"
     },
     module: {
-        loaders: [
-            {
-                test: /\.html$/,
-                use: [
-                    { loader: 'babel-loader' },
-                    { loader: 'polymer-webpack-loader' }
-                ]
-            }
-        ]
+        loaders: []
     },
     output: {
         filename: "[name].js"
