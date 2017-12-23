@@ -1,0 +1,19 @@
+<html lang="en-US" xmlns:th="http://www.w3.org/1999/xhtml">
+    <head th:replace="/fragments/header :: header"></head>
+
+    <body class="author author--page">
+        <div th:replace="/fragments/ui :: ui"></div>
+
+        <div class="content">
+            <h1 th:text="${author.name}"></h1>
+
+            <h2>Articles</h2>
+
+            <div class="author__article" th:each="article: ${articles}">
+                <h3 th:text="${article.title}"></h3>
+                <h4 th:text="${article.url}"></h4>
+                <div th:text="${article.body}"></div>
+            </div>
+        </div>
+    </body>
+</html>

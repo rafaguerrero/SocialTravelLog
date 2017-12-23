@@ -44,7 +44,7 @@ public class AuthorController {
 
     @RequestMapping(value = {"", "/"}, method = RequestMethod.GET)
     public String createAuthorForm() {
-        return "/views/author/create";
+        return "/author/create";
     }
 
     @RequestMapping(value = "/{userId}", method = RequestMethod.GET)
@@ -60,7 +60,7 @@ public class AuthorController {
 
             mav.addObject("author", author);
             mav.addObject("articles", article);
-            mav.setViewName("/views/author/page");
+            mav.setViewName("/author/page");
         } else {
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
         }

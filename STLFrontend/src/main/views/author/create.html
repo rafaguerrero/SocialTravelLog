@@ -1,0 +1,19 @@
+<html lang="en-US" xmlns:th="http://www.w3.org/1999/xhtml">
+    <head th:replace="/fragments/header :: header"></head>
+
+    <body class="author author--creation">
+        <div th:replace="/fragments/ui :: ui"></div>
+
+        <div class="content">
+            <form class="stl-form-post" method="post">
+                UserId:<br>
+                <input type="text" name="userId" value="UserId"><br>
+
+                Name:<br>
+                <input type="text" name="name" value="Name"><br><br>
+
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </body>
+</html>
