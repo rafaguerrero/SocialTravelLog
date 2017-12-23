@@ -13,29 +13,21 @@
  */
 
 var path = require('path');
-
 var projectRoot = __dirname + "/../src/main/js/";
-var libsRoot = projectRoot + "/../external/js";
 
 module.exports = {
     resolve: {
-        alias: {
-            "angular": libsRoot + '/angular.min',
-            "angular-animate": libsRoot + "/angular-animate.min",
-            "angular-bootstrap": libsRoot + "/ui-bootstrap.min",
-            "angular-bootstrap-tpls": libsRoot + "/ui-bootstrap-tpls.min",
-            "angular-bootstrap-datetimepicker": libsRoot + "/datetime-picker"
-        },
-        "root": projectRoot
+        alias: {},
+        "root": projectRoot,
+        modules: [
+            path.resolve(__dirname, 'node_modules')
+        ]
     },
     resolveLoader: {
         root: __dirname + "/node_modules"
     },
     module: {
-        loaders: [
-            { test: /\.js$/, exclude: /node_modules|webapp\/resources/, loader: "babel-loader"},
-            { test: /[\/]angular\.min\.js$/, loader: "exports?window.angular" }
-        ]
+        loaders: []
     },
     output: {
         filename: "[name].js"

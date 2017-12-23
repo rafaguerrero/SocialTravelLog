@@ -1,12 +1,5 @@
 /**
- * Created by rafaelguerreroclemente on 15/7/17.
+ * Created by rafaelguerreroclemente
  */
 
-import FormPost from 'components/FormPost';
-
-function main() {
-    let formPost = document.querySelector(".stl-form-post");
-    !!formPost && (new FormPost(formPost));
-}
-
-main();
+import '../html/my-element.html'

@@ -67,7 +67,7 @@ public class ArticleCreationController {
             return mav;
         }
 
-        mav.setViewName("/views/article/create");
+        mav.setViewName("/article/create");
         return mav;
     }
 }

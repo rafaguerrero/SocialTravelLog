@@ -29,7 +29,7 @@ public class PageControler {
         if(article != null) {
             mav.addObject("article", article);
 
-            mav.setViewName("/views/article/page");
+            mav.setViewName("/article/page");
         } else {
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
         }

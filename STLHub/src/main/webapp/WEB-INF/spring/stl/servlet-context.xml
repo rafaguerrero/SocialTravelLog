@@ -27,15 +27,6 @@
                 <entry key="html" value="text/html"/>
             </map>
         </property>
-        <property name="viewResolvers">
-            <list>
-                <bean class="org.springframework.web.servlet.view.BeanNameViewResolver"/>
-                <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-                    <property name="prefix" value="/WEB-INF"/>
-                    <property name="suffix" value=".jsp"/>
-                </bean>
-            </list>
-        </property>
         <property name="defaultViews">
             <list>
                 <bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />

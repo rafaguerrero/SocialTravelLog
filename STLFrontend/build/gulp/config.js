@@ -27,9 +27,7 @@ module.exports = {
 		dest: dest + 'css'
 	},
 	libsCss: {
-		source: [
-			src + 'external/css/bootstrap.min.css'
-		],
+		source: [],
 		dest: dest + 'css'
 	}
 };
