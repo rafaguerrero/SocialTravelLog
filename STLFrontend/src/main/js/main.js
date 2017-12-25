@@ -1,5 +1,3 @@
-/**
- * Created by rafaelguerreroclemente
- */
+import app from "app"
 
-import '../html/my-element.html'
+app.init();
