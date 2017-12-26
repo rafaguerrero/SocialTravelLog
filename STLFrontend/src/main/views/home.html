@@ -4,7 +4,7 @@
     <body class="homepage">
         <div th:replace="/fragments/ui :: ui"></div>
 
-        <div class="content">
+        <div class="content tempDirective">
             <div th:each="article: ${articles}" class="homepage__article article">
                 <h1 th:text="${article.title}"></h1>
                 <div class="article__metadata">
