@@ -8,15 +8,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var platform_browser_1 = require("@angular/platform-browser");
 var core_1 = require("@angular/core");
-var temp_directive_1 = require("./app/directives/temp.directive");
+//import { TempDirective } from './app/directives/temp.directive';
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
-            declarations: [
-                temp_directive_1.TempDirective
-            ],
+            declarations: [],
             imports: [
                 platform_browser_1.BrowserModule
             ],
@@ -27,3 +25,4 @@ var AppModule = (function () {
     return AppModule;
 }());
 exports.AppModule = AppModule;
+//# sourceMappingURL=app.module.js.map

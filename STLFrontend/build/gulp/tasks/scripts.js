@@ -1,4 +1,4 @@
-var gulp = require('gulp'),
+/*var gulp = require('gulp'),
 	webpackStream = require('webpack-stream'),
 	webpack = require('webpack'),
 	plumber = require('gulp-plumber'),
@@ -15,4 +15,17 @@ gulp.task('scripts', [], function() {
 		.pipe(plumber(errorHandler))
 		.pipe(webpackStream(webpackConfig))
 		.pipe(gulp.dest(config.dest));
+});
+*/
+
+
+var gulp = require("gulp"),
+    ts = require("gulp-typescript"),
+    config = require('../config').js,
+    tsProject = ts.createProject("tsconfig.json");
+
+gulp.task("default", function () {
+    return tsProject.src()
+                    .pipe(tsProject()).js
+                    .pipe(gulp.dest(config.dest));
 });

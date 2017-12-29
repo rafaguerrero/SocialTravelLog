@@ -5,8 +5,8 @@ var projectRoot = __dirname + "/../src/main/js/";
 
 module.exports = {
     resolve: {
-        alias: {},
-        "root": projectRoot
+        "root": projectRoot,
+        extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js']
     },
     resolveLoader: {
         root: __dirname + "/node_modules"
