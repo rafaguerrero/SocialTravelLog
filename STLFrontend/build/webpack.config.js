@@ -12,6 +12,13 @@ module.exports = {
         root: __dirname + "/node_modules"
     },
     module: {
+        rules: [
+            {
+                test: /\.tsx?$/,
+                use: 'ts-loader',
+                exclude: /node_modules/
+            }
+        ],
         loaders: [
             { test: /\.js$/, exclude: /node_modules|webapp\/resources/, loader: "babel-loader"},
             { test: /[\/]angular\.min\.js$/, loader: "exports?window.angular" }
