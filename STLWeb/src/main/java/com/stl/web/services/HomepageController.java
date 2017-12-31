@@ -16,11 +16,8 @@ public class HomepageController {
     @RequestMapping(value = {"", "/"})
     public ModelAndView getHomepage() {
         ModelAndView mav = new ModelAndView();
-
         mav.addObject("articles", articleDB.getLatestArticles());
-        mav.setViewName("/views/home");
-
-
+        mav.setViewName("/home");
         return mav;
     }
 }

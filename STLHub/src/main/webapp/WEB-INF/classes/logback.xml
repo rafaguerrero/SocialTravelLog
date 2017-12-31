@@ -11,10 +11,10 @@
     </appender>
 
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <File>logs/glippyHub.log</File>
+        <File>logs/stl.log</File>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <FileNamePattern>
-                logs/marfeelHub.%d{yyyy-MM-dd}.log.zip
+                logs/stil.%d{yyyy-MM-dd}.log.zip
             </FileNamePattern>
             <maxHistory>5</maxHistory>
         </rollingPolicy>

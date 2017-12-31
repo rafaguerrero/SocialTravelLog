@@ -73,7 +73,7 @@ public class AuthorController {
 
             mav.addObject("author", author);
             mav.addObject("articles", article);
-            mav.setViewName("/views/author/page");
+            mav.setViewName("/author/page");
         } else {
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
         }

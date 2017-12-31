@@ -1,7 +1,7 @@
-/Users/aldana/Documents/workspace/SocialTravelLog/STLDomain/src/main/java/com/stl/domain/impl/ArticleRepositoryImpl.java
-/Users/aldana/Documents/workspace/SocialTravelLog/STLDomain/src/main/java/com/stl/entity/Author.java
-/Users/aldana/Documents/workspace/SocialTravelLog/STLDomain/src/main/java/com/stl/entity/Article.java
-/Users/aldana/Documents/workspace/SocialTravelLog/STLDomain/src/main/java/com/stl/domain/ArticleRepository.java
-/Users/aldana/Documents/workspace/SocialTravelLog/STLDomain/src/main/java/com/stl/domain/AuthorRepository.java
-/Users/aldana/Documents/workspace/SocialTravelLog/STLDomain/src/main/java/com/stl/domain/impl/AuthorRepositoryImpl.java
-/Users/aldana/Documents/workspace/SocialTravelLog/STLDomain/src/main/java/com/stl/utils/UrlUtils.java
+/Users/rafaelguerreroclemente/Documents/offtime/SocialTravelLog/STLDomain/src/main/java/com/stl/utils/UrlUtils.java
+/Users/rafaelguerreroclemente/Documents/offtime/SocialTravelLog/STLDomain/src/main/java/com/stl/domain/impl/AuthorRepositoryImpl.java
+/Users/rafaelguerreroclemente/Documents/offtime/SocialTravelLog/STLDomain/src/main/java/com/stl/domain/impl/ArticleRepositoryImpl.java
+/Users/rafaelguerreroclemente/Documents/offtime/SocialTravelLog/STLDomain/src/main/java/com/stl/domain/AuthorRepository.java
+/Users/rafaelguerreroclemente/Documents/offtime/SocialTravelLog/STLDomain/src/main/java/com/stl/entity/Article.java
+/Users/rafaelguerreroclemente/Documents/offtime/SocialTravelLog/STLDomain/src/main/java/com/stl/entity/Author.java
+/Users/rafaelguerreroclemente/Documents/offtime/SocialTravelLog/STLDomain/src/main/java/com/stl/domain/ArticleRepository.java

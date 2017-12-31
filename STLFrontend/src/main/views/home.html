@@ -1,0 +1,23 @@
+<html lang="en-US" xmlns:th="http://www.w3.org/1999/xhtml">
+    <head th:replace="/fragments/header :: header"></head>
+
+    <body class="homepage">
+        <div th:replace="/fragments/ui :: ui"></div>
+
+        <div class="content tempDirective">
+            <div th:each="article: ${articles}" class="homepage__article article">
+                <h1 th:text="${article.title}"></h1>
+                <div class="article__metadata">
+                    <div class="article__metadata__author">
+                        By <a th:text="${article.author.name}"
+                              th:href="@{'/author/'+${article.author.userId}}"
+                              target="_self"></a>
+                    </div>
+                    <div class="article__metadata__author">
+                        Tags: <span th:each="tag: ${article.tags}"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
