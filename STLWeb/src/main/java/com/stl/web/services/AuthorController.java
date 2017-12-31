@@ -7,10 +7,8 @@ import com.stl.entity.Author;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -28,23 +26,38 @@ public class AuthorController {
     private ArticleDB articleDB;
 
     @RequestMapping(value = {"", "/"}, method = RequestMethod.POST)
-    public ModelAndView createAuthor(@RequestBody Author author,
+    public ModelAndView createAuthor(@RequestBody @ModelAttribute("author") Author author,
+                                     BindingResult result,
                                      ModelMap model,
                                      HttpServletRequest request,
                                      HttpServletResponse response) {
-        authorDB.save(author);
-
         ModelAndView mav = new ModelAndView();
-        mav.addObject("status", "sucess");
 
-        response.setStatus(HttpServletResponse.SC_CREATED);
+        if (result.hasErrors()) {
+            mav.addObject("status", "error");
+            mav.setViewName("/views/author/create");
+        }else {
 
+            if (author == null) {
+                mav.addObject("status", "error");
+                mav.setViewName("/views/author/create");
+
+            } else {
+                authorDB.save(author);
+
+                mav.addObject("status", "sucess");
+                mav.setViewName("/views/author/createsuccess");
+                response.setStatus(HttpServletResponse.SC_CREATED);
+            }
+
+
+        }
         return mav;
     }
 
     @RequestMapping(value = {"", "/"}, method = RequestMethod.GET)
-    public String createAuthorForm() {
-        return "/views/author/create";
+    public ModelAndView createAuthorForm() {
+        return new ModelAndView("/views/author/create", "author", new Author());
     }
 
     @RequestMapping(value = "/{userId}", method = RequestMethod.GET)

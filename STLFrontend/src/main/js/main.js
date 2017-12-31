@@ -5,8 +5,7 @@
 import FormPost from 'components/FormPost';
 
 function main() {
-    let formPost = document.querySelector(".stl-form-post");
-    !!formPost && (new FormPost(formPost));
+
 }
 
 main();
