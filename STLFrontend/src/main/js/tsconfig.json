@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "moduleResolution": "node",
+    "allowJs": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "lib": [ "es2015", "dom" ],
+    "noImplicitAny": true,
+    "sourceMap": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "typeRoots": [
+      "../../../build/node_modules/@types"
+    ],
+    "types" : [
+      "core-js"
+    ]
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}

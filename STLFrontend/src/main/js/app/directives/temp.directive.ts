@@ -1,17 +1,14 @@
 import {
     Directive,
-    Renderer,
     ElementRef
 } from '@angular/core';
 
 @Directive({
     selector:".tempDirective"
 })
-
-class TempDirective {
-    constructor(private el: ElementRef,
-                private renderer: Renderer) {
-
+export class TempDirective {
+    constructor() {
+        debugger;
         console.log("------------------------");
         console.log("Temp Directive");
         console.log("------------------------");

@@ -1,17 +1,15 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-//import { TempDirective } from './app/directives/temp.directive';
+import {TempDirective} from './directives/temp.directive';
 
 @NgModule({
-  declarations: [
-  //    TempDirective
-  ],
-  imports: [
-    BrowserModule
-  ],
-  providers: [],
-  bootstrap: []
+    declarations: [
+        TempDirective
+    ],
+    imports: [
+        CommonModule
+    ]
 })
-
-export class AppModule { }
+export class AppModule {
+}
