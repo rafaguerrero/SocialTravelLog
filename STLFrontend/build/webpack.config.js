@@ -13,8 +13,7 @@ module.exports = {
     },
     module: {
         loaders: [
-            { test: /\.js$/, exclude: /node_modules|webapp\/resources/, loader: "babel-loader"},
-            { test: /[\/]angular\.min\.js$/, loader: "exports?window.angular" }
+            { test: /\.js$/, exclude: /node_modules|webapp\/resources/, loader: "babel-loader"}
         ]
     },
     output: {
