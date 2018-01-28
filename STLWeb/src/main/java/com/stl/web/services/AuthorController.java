@@ -1,5 +1,6 @@
 package com.stl.web.services;
 
+import org.springframework.dao.DuplicateKeyException;
 import com.stl.db.ArticleDB;
 import com.stl.db.AuthorDB;
 import com.stl.entity.Article;
@@ -7,12 +8,8 @@ import com.stl.entity.Author;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
@@ -28,23 +25,39 @@ public class AuthorController {
     private ArticleDB articleDB;
 
     @RequestMapping(value = {"", "/"}, method = RequestMethod.POST)
-    public ModelAndView createAuthor(@RequestBody Author author,
+    public ModelAndView createAuthor(@RequestBody @ModelAttribute("author") Author author,
                                      ModelMap model,
                                      HttpServletRequest request,
                                      HttpServletResponse response) {
-        authorDB.save(author);
-
         ModelAndView mav = new ModelAndView();
-        mav.addObject("status", "sucess");
 
-        response.setStatus(HttpServletResponse.SC_CREATED);
+        if (author == null) {
+            mav.addObject("status", "genericError");
+            mav.setViewName("/author/create");
+
+        } else {
+            try {
+                authorDB.save(author);
+
+                mav.addObject("status", "success");
+                mav.setViewName("/author/createsuccess");
+                response.setStatus(HttpServletResponse.SC_CREATED);
+
+            } catch (DuplicateKeyException e) {
+                mav.addObject("status", "authorAlreadyExists");
+                mav.setViewName("/author/create");
+            } catch (Exception e) {
+                mav.addObject("status", "genericError");
+                mav.setViewName("/author/create");
+            }
+        }
 
         return mav;
     }
 
     @RequestMapping(value = {"", "/"}, method = RequestMethod.GET)
-    public String createAuthorForm() {
-        return "/author/create";
+    public ModelAndView createAuthorForm() {
+        return new ModelAndView("/author/create", "author", new Author());
     }
 
     @RequestMapping(value = "/{userId}", method = RequestMethod.GET)

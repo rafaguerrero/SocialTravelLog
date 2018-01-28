@@ -1,0 +1,26 @@
+<html lang="en-US"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="/fragments/header :: header"></head>
+
+<body class="author author--creation">
+<div th:replace="/fragments/ui :: ui"></div>
+
+<div class="content">
+
+    <div th:if="${status}">
+        <div th:switch="${status}" class="author__creation__error">
+            <p th:case="'genericError'">There was an error</p>
+            <p th:case="'authorAlreadyExists'">User already exists</p>
+        </div>
+    </div>
+
+
+    <form th:object="${author}" method="post">
+        <p>userId: <input type="text" th:field="*{userId}" /></p>
+        <p>Name: <input type="text" th:field="*{name}" /></p>
+        <p><input type="submit" value="Submit" />
+    </form>
+</div>
+</body>
+</html>

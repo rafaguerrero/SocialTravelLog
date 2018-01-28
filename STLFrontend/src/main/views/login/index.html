@@ -1,0 +1,19 @@
+<html lang="en-US" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="/fragments/header :: header"></head>
+
+<body class="homepage">
+<div th:replace="/fragments/ui :: ui"></div>
+
+<div class="content tempDirective">
+
+    <form action="">
+        User ID:<br>
+        <input type="text" name="UserID"><br>
+        Password:<br>
+        <input type="text" name="Password"><br><br>
+        <input type="submit" value="Submit">
+    </form><a href="/register/">Register here!</a>
+
+</div>
+</body>
+</html>
