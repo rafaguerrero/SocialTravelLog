@@ -28,7 +28,8 @@ nginx() {
       sed -e 's|$STL_HOME|'$STL_HOME'|' "$file" > $STL_HOME/.nginx/$fileName
     done
 
-    sudo nginx -s reload -c $STL_HOME/.nginx/nginx.conf
+    sudo nginx -s stop
+    sudo nginx -c $STL_HOME/.nginx/nginx.conf
 }
 
 links() {

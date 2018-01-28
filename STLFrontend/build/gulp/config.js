@@ -3,8 +3,8 @@ var dest = '../src/main/resources/',
 
 module.exports = {
 	js: {
-		source: src + 'js/**/*.ts',
-		optimize: src + 'js/main.ts',
+		source: src + 'js/**/*.js',
+		optimize: src + 'js/main.js',
 		config: '../../webpack.config.js',
 		dest: dest + 'js'
 	},
