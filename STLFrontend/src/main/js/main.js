@@ -1,4 +1,8 @@
 
-console.log("------------------------");
-console.log("HOLA");
-console.log("------------------------");
+import ComponentsInitializer from 'ComponentsInitializer';
+
+function main() {
+    ComponentsInitializer.initilize();
+}
+
+main();
