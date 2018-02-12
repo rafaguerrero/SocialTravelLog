@@ -4,3 +4,10 @@
 ## COMPILED FILES
 STLFrontend/src/main/resources/css/*
 STLFrontend/src/main/resources/js/*
+
+## VIEWS
+STLHub/src/main/webapp/WEB-INF/views
+STLHub/src/main/webapp/WEB-INF/views/**
+
+## LOCAL FILES
+.idea/workspace.xml

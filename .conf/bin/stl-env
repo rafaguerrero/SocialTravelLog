@@ -34,7 +34,6 @@ nginx() {
 
 links() {
     ln -sfn $STL_HOME/STLFrontend/src/main/views $STL_HOME/STLHub/src/main/webapp/WEB-INF
-    ln -sfn $STL_HOME/STLFrontend/src/main/tags $STL_HOME/STLHub/src/main/webapp/WEB-INF
 }
 
 usage() {
