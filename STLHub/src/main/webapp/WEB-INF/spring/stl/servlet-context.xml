@@ -19,21 +19,6 @@
     <mongo:repositories base-package="com.stl.domain"/>
     <mongo:auditing/>
 
-    <!-- MVC View resolvers -->
-    <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
-        <property name="mediaTypes">
-            <map>
-                <entry key="json" value="application/json"/>
-                <entry key="html" value="text/html"/>
-            </map>
-        </property>
-        <property name="defaultViews">
-            <list>
-                <bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />
-            </list>
-        </property>
-    </bean>
-
     <!-- MongoDB conection -->
     <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
         <constructor-arg>

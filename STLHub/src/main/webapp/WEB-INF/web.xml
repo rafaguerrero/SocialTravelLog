@@ -14,17 +14,6 @@
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
 
-    <!-- Spring security web infrastructure hook -->
-    <filter>
-        <filter-name>springSecurityFilterChain</filter-name>
-        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
-    </filter>
-
-    <filter-mapping>
-        <filter-name>springSecurityFilterChain</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
-
     <!-- Servlets -->
     <servlet>
         <servlet-name>stlHub</servlet-name>
@@ -41,13 +30,12 @@
         <url-pattern>/hub/*</url-pattern>
     </servlet-mapping>
 
-    <servlet>
-        <servlet-name>AccessViewStatusMessages</servlet-name>
-        <servlet-class>ch.qos.logback.access.ViewStatusMessagesServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>AccessViewStatusMessages</servlet-name>
-        <url-pattern>/lbAccessStatus</url-pattern>
-    </servlet-mapping>
+    <filter>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 </web-app>

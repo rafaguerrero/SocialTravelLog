@@ -1,29 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <beans  xmlns="http://www.springframework.org/schema/beans"
-        xmlns:security="http://www.springframework.org/schema/security"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.springframework.org/schema/beans
-	        http://www.springframework.org/schema/beans/spring-beans.xsd
-            http://www.springframework.org/schema/security
-            http://www.springframework.org/schema/security/spring-security.xsd">
+	        http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <security:global-method-security pre-post-annotations="enabled" secured-annotations="enabled"/>
-
-    <security:http use-expressions="true" authentication-manager-ref="basicHttpManager" pattern="/hub/stl/**" >
-        <security:http-basic />
-    </security:http>
-
-    <bean id="authenticationSuccessHandler" class="org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler">
-        <property name="useReferer" value="true" />
-    </bean>
-
-    <security:authentication-manager id="basicHttpManager">
-        <security:authentication-provider>
-            <security:user-service id="defaultSecurityService">
-                <security:user name="admin" password="admin" authorities="ROLE_ADMIN" />
-            </security:user-service>
-        </security:authentication-provider>
-    </security:authentication-manager>
-
+    <import resource="stl/security-context.xml"/>
 </beans>
