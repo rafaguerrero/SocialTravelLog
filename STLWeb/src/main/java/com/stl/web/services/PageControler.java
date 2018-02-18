@@ -1,6 +1,6 @@
 package com.stl.web.services;
 
-import com.stl.domain.ArticleRepository;
+import com.stl.db.ArticleDB;
 import com.stl.entity.Article;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 public class PageControler {
 
     @Autowired
-    private ArticleRepository articleRepository;
+    private ArticleDB articleDB;
 
     @RequestMapping(value = "/{userId}/{path}")
     public ModelAndView showArticle(@PathVariable String userId,
@@ -25,7 +25,7 @@ public class PageControler {
 
         ModelAndView mav = new ModelAndView();
 
-        Article article = articleRepository.findByUrl("/" + userId + "/" + path);
+        Article article = articleDB.getByUrl("/" + userId + "/" + path);
         if(article != null) {
             mav.addObject("article", article);
 
