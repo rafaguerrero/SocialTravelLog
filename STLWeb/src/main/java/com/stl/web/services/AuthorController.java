@@ -1,5 +1,6 @@
 package com.stl.web.services;
 
+import com.stl.domain.ArticleRepository;
 import org.springframework.dao.DuplicateKeyException;
 import com.stl.db.ArticleDB;
 import com.stl.db.AuthorDB;
@@ -15,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @Controller
-@RequestMapping(value = "/author")
+@RequestMapping(value = {"/{userId}"})
 public class AuthorController {
 
     @Autowired
@@ -24,43 +25,11 @@ public class AuthorController {
     @Autowired
     private ArticleDB articleDB;
 
-    @RequestMapping(value = {"", "/"}, method = RequestMethod.POST)
-    public ModelAndView createAuthor(@RequestBody @ModelAttribute("author") Author author,
-                                     ModelMap model,
-                                     HttpServletRequest request,
-                                     HttpServletResponse response) {
-        ModelAndView mav = new ModelAndView();
+    @Autowired
+    private ArticleRepository articleRepository;
 
-        if (author == null) {
-            mav.addObject("status", "genericError");
-            mav.setViewName("/author/create");
 
-        } else {
-            try {
-                authorDB.save(author);
-
-                mav.addObject("status", "success");
-                mav.setViewName("/author/createsuccess");
-                response.setStatus(HttpServletResponse.SC_CREATED);
-
-            } catch (DuplicateKeyException e) {
-                mav.addObject("status", "authorAlreadyExists");
-                mav.setViewName("/author/create");
-            } catch (Exception e) {
-                mav.addObject("status", "genericError");
-                mav.setViewName("/author/create");
-            }
-        }
-
-        return mav;
-    }
-
-    @RequestMapping(value = {"", "/"}, method = RequestMethod.GET)
-    public ModelAndView createAuthorForm() {
-        return new ModelAndView("/author/create", "author", new Author());
-    }
-
-    @RequestMapping(value = "/{userId}", method = RequestMethod.GET)
+    @RequestMapping(value = {"","/"}, method = RequestMethod.GET)
     public ModelAndView getAuthorPage(@PathVariable String userId,
                                     HttpServletRequest request,
                                     HttpServletResponse response) {
@@ -80,4 +49,25 @@ public class AuthorController {
 
         return mav;
     }
+
+    @RequestMapping(value = {"/{path}","/{path}/"})
+    public ModelAndView showArticle(@PathVariable String userId,
+                                    @PathVariable String path,
+                                    HttpServletRequest request,
+                                    HttpServletResponse response) {
+
+        ModelAndView mav = new ModelAndView();
+
+        Article article = articleRepository.findByUrl("/" + userId + "/" + path);
+        if(article != null) {
+            mav.addObject("article", article);
+
+            mav.setViewName("/article/page");
+        } else {
+            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+        }
+
+        return mav;
+    }
+
 }
