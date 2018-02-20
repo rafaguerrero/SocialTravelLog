@@ -13,7 +13,7 @@ public class HomepageController {
     @Autowired
     ArticleDB articleDB;
 
-    @RequestMapping(value = {"", "/"})
+    @RequestMapping(value = {""})
     public ModelAndView getHomepage() {
         ModelAndView mav = new ModelAndView();
         mav.addObject("articles", articleDB.getLatestArticles());
