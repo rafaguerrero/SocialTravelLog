@@ -47,15 +47,10 @@
           <element id="library" level="project" name="Maven: aopalliance:aopalliance:1.0" />
           <element id="library" level="project" name="Maven: org.springframework.security:spring-security-core:4.2.4.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.security:spring-security-config:4.2.4.RELEASE" />
+          <element id="library" level="project" name="Maven: javax.servlet:jstl:1.2" />
           <element id="library" level="project" name="Maven: org.quartz-scheduler:quartz:2.2.1" />
           <element id="library" level="project" name="Maven: c3p0:c3p0:0.9.1.1" />
           <element id="library" level="project" name="Maven: org.quartz-scheduler:quartz-jobs:2.2.1" />
-          <element id="library" level="project" name="Maven: org.thymeleaf:thymeleaf:3.0.7.RELEASE" />
-          <element id="library" level="project" name="Maven: ognl:ognl:3.1.12" />
-          <element id="library" level="project" name="Maven: org.javassist:javassist:3.20.0-GA" />
-          <element id="library" level="project" name="Maven: org.attoparser:attoparser:2.0.4.RELEASE" />
-          <element id="library" level="project" name="Maven: org.unbescape:unbescape:1.1.5.RELEASE" />
-          <element id="library" level="project" name="Maven: org.thymeleaf:thymeleaf-spring4:3.0.7.RELEASE" />
         </element>
       </element>
       <element id="directory" name="META-INF">
