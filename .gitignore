@@ -8,6 +8,8 @@ STLFrontend/src/main/resources/js/*
 ## VIEWS
 STLHub/src/main/webapp/WEB-INF/views
 STLHub/src/main/webapp/WEB-INF/views/**
+STLHub/src/main/webapp/WEB-INF/tags
+STLHub/src/main/webapp/WEB-INF/tags/**
 
 ## LOCAL FILES
 .idea/workspace.xml
