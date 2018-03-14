@@ -8,9 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @Controller
-public class AdminControler {
+@RequestMapping(value = "/admin")
+public class AdminController {
 
-    @RequestMapping(value = "/admin")
+    @RequestMapping(value = "")
     public ModelAndView loggedContent(HttpServletRequest request,
                                       HttpServletResponse response) {
 

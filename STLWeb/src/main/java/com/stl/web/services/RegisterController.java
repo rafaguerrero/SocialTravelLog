@@ -1,7 +1,7 @@
 package com.stl.web.services;
 
-import com.stl.db.AuthorDB;
-import com.stl.entity.Author;
+import com.stl.db.TravelerDB;
+import com.stl.entity.Traveler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
@@ -16,47 +16,45 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @Controller
-@RequestMapping(value = "/login")
-
-public class Login {
-
+@RequestMapping(value = "/register")
+public class RegisterController {
     @Autowired
-    private AuthorDB authorDB;
+    private TravelerDB travelerDB;
 
     @RequestMapping(value = {"", "/"}, method = RequestMethod.POST)
-    public ModelAndView createAuthor(@RequestBody @ModelAttribute("author") Author author,
-                                     ModelMap model,
-                                     HttpServletRequest request,
-                                     HttpServletResponse response) {
+    public ModelAndView createTraveler(@RequestBody @ModelAttribute("traveler") Traveler traveler,
+                                       ModelMap model,
+                                       HttpServletRequest request,
+                                       HttpServletResponse response) {
         ModelAndView mav = new ModelAndView();
 
-        if (author == null) {
+        if (traveler == null) {
             mav.addObject("status", "genericError");
-            mav.setViewName("/login");
+            mav.setViewName("/traveler/create");
 
         } else {
             try {
-                authorDB.save(author);
+                travelerDB.save(traveler);
 
                 mav.addObject("status", "success");
-                mav.setViewName("/login/loginsuccess"); /*ir al perfil del escritor*/
+                mav.setViewName("/traveler/createsuccess");
                 response.setStatus(HttpServletResponse.SC_CREATED);
 
             } catch (DuplicateKeyException e) {
                 mav.addObject("status", "authorAlreadyExists");
-                mav.setViewName("/login");
+                mav.setViewName("/traveler/create");
             } catch (Exception e) {
                 mav.addObject("status", "genericError");
-                mav.setViewName("/login");
+                mav.setViewName("/traveler/create");
             }
         }
 
         return mav;
     }
 
-
     @RequestMapping(value = {"", "/"}, method = RequestMethod.GET)
-    public String createAuthorForm() {
-        return "/login/index";
+    public ModelAndView createAuthorForm() {
+        return new ModelAndView("/traveler/create", "traveler", new Traveler());
     }
+
 }

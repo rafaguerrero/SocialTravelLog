@@ -1,7 +1,7 @@
 package com.stl.web.services;
 
-import com.stl.db.ArticleDB;
-import com.stl.entity.Article;
+import com.stl.db.TripDB;
+import com.stl.entity.Trip;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,12 +12,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @Controller
-public class PageControler {
+@RequestMapping(value = "/{userId}/{path}")
+public class TripController {
 
     @Autowired
-    private ArticleDB articleDB;
+    private TripDB tripDB;
 
-    @RequestMapping(value = "/{userId}/{path}")
+    @RequestMapping(value = "")
     public ModelAndView showArticle(@PathVariable String userId,
                                     @PathVariable String path,
                                     HttpServletRequest request,
@@ -25,11 +26,11 @@ public class PageControler {
 
         ModelAndView mav = new ModelAndView();
 
-        Article article = articleDB.getByUrl("/" + userId + "/" + path);
-        if(article != null) {
-            mav.addObject("article", article);
+        Trip trip = tripDB.getByUrl("/" + userId + "/" + path);
+        if(trip != null) {
+            mav.addObject("article", trip);
 
-            mav.setViewName("/article/page");
+            mav.setViewName("/trip/page");
         } else {
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
         }

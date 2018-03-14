@@ -12,14 +12,14 @@
         </c:when>
     </c:choose>
 
-    <form:form method="post" class="creation__form" modelAttribute="author">
+    <form:form method="post" class="creation__form" modelAttribute="traveler">
         <fieldset>
             <div class="creation__form__row">
-                <span>UserId:</span><br/>
-                <form:input type="text" path="userId"/>
+                <span>Username:</span><br/>
+                <form:input type="text" path="username"/>
             </div>
             <div class="creation__form__row">
-                <span>Name:</span><br/>
+                <span>Full name:</span><br/>
                 <form:input type="text" path="name" />
             </div>
             <div class="creation__form__row">

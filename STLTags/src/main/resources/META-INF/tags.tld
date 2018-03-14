@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+        version="2.0">
+
+    <description>SocialTravelLog 1.0 Tags library</description>
+    <display-name>Tags core</display-name>
+    <tlib-version>1.0</tlib-version>
+    <short-name>tags</short-name>
+    <uri>http://dev.stl.com/jsp/stl/tags</uri>
+
+    <tag>
+        <description>Gets traveler data from username</description>
+        <name>travelerData</name>
+        <tag-class>com.stl.tags.TravelerDataTag</tag-class>
+        <body-content>scriptless</body-content>
+
+        <attribute>
+            <description>Username of the traveler</description>
+            <name>username</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+</taglib>

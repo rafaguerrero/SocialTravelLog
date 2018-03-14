@@ -10,12 +10,12 @@ import java.util.Date;
 import java.util.List;
 
 @Document
-public class Article {
+public class Trip {
     @Id
     protected String id;
 
     @DBRef
-    private Author author;
+    private Traveler traveler;
 
     @Indexed(unique = true)
     private String url;
@@ -34,12 +34,12 @@ public class Article {
         this.id = id;
     }
 
-    public Author getAuthor() {
-        return author;
+    public Traveler getTraveler() {
+        return traveler;
     }
 
-    public void setAuthor(Author author) {
-        this.author = author;
+    public void setTraveler(Traveler traveler) {
+        this.traveler = traveler;
         generateUrl();
     }
 
@@ -77,8 +77,8 @@ public class Article {
     }
 
     private void generateUrl() {
-        if(this.url == null && this.author != null && this.title != null) {
-            this.url = UrlUtils.generateUrl(this.title, this.author.getUserId());
+        if(this.url == null && this.traveler != null && this.title != null) {
+            this.url = UrlUtils.generateUrl(this.title, this.traveler.getUsername());
         }
     }
 

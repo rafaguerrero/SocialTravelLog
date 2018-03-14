@@ -5,12 +5,12 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
-public class Author {
+public class Traveler {
     @Id
     protected String id;
 
     @Indexed(unique = true)
-    String userId;
+    String username;
 
     String name;
 
@@ -30,11 +30,11 @@ public class Author {
         this.name = name;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setUsername(String username) {
+        this.username = username;
     }
 }
