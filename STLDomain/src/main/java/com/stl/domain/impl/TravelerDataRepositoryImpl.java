@@ -1,7 +1,7 @@
 package com.stl.domain.impl;
 
 import com.stl.domain.TravelerDataRepository;
-import com.stl.entity.TravelerData;
+import com.stl.entity.Traveler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Repository;
@@ -16,12 +16,12 @@ public class TravelerDataRepositoryImpl implements TravelerDataRepository {
     private MongoTemplate mongoTemplate;
 
     @Override
-    public TravelerData findByUsername(String username) {
-        return mongoTemplate.findOne(query(where("userId").is(username)), TravelerData.class);
+    public Traveler findByUsername(String username) {
+        return mongoTemplate.findOne(query(where("username").is(username)), Traveler.class);
     }
 
     @Override
-    public TravelerData save(TravelerData traveler) {
+    public Traveler save(Traveler traveler) {
         Assert.notNull(traveler, "Entity must not be null!");
 
         mongoTemplate.save(traveler);

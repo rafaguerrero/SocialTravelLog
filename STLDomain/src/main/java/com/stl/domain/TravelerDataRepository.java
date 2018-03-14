@@ -1,8 +1,8 @@
 package com.stl.domain;
 
-import com.stl.entity.TravelerData;
+import com.stl.entity.Traveler;
 
 public interface TravelerDataRepository {
-    TravelerData findByUsername(String username);
-    TravelerData save(TravelerData traveler);
+    Traveler findByUsername(String username);
+    Traveler save(Traveler traveler);
 }

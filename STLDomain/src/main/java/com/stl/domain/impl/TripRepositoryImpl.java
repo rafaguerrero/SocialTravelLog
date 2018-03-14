@@ -1,8 +1,8 @@
 package com.stl.domain.impl;
 
-import com.stl.domain.ArticleRepository;
-import com.stl.entity.Article;
-import com.stl.entity.TravelerData;
+import com.stl.domain.TripRepository;
+import com.stl.entity.Trip;
+import com.stl.entity.Traveler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -16,42 +16,42 @@ import static org.springframework.data.mongodb.core.query.Criteria.where;
 import static org.springframework.data.mongodb.core.query.Query.query;
 
 @Repository
-public class ArticleRepositoryImpl implements ArticleRepository {
+public class TripRepositoryImpl implements TripRepository {
     private static final int MAX_ARTICLES_PAGE = 20;
 
     @Autowired
     private MongoTemplate mongoTemplate;
 
     @Override
-    public Article save(Article article) {
-        Assert.notNull(article, "Entity must not be null!");
+    public Trip save(Trip trip) {
+        Assert.notNull(trip, "Entity must not be null!");
 
-        mongoTemplate.save(article);
-        return article;
+        mongoTemplate.save(trip);
+        return trip;
     }
 
     @Override
-    public Article findByUrl(String url) {
+    public Trip findByUrl(String url) {
         Assert.notNull(url, "Url must not be null!");
 
-        return mongoTemplate.findOne(query(where("url").is(url)), Article.class);
+        return mongoTemplate.findOne(query(where("url").is(url)), Trip.class);
     }
 
     @Override
-    public List<Article> findByTraveler(TravelerData traveler) {
-        Query query = query(where("author").is(traveler));
+    public List<Trip> findByTraveler(Traveler traveler) {
+        Query query = query(where("traveler").is(traveler));
         query.with(new Sort(Sort.Direction.DESC, "creationTime"));
         query.limit(MAX_ARTICLES_PAGE);
 
-        return mongoTemplate.find(query, Article.class);
+        return mongoTemplate.find(query, Trip.class);
     }
 
     @Override
-    public List<Article> findLatestByCreationDate() {
+    public List<Trip> findLatestByCreationDate() {
         Query query = new Query();
         query.with(new Sort(Sort.Direction.DESC, "creationTime"));
         query.limit(MAX_ARTICLES_PAGE);
 
-        return mongoTemplate.find(query, Article.class);
+        return mongoTemplate.find(query, Trip.class);
     }
 }

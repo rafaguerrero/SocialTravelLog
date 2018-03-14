@@ -1,31 +1,28 @@
 package com.stl.web.services;
 
-import org.springframework.dao.DuplicateKeyException;
-import com.stl.db.ArticleDB;
-import com.stl.db.TravelerDataDB;
-import com.stl.entity.Article;
-import com.stl.entity.TravelerData;
+import com.stl.db.TravelerDB;
+import com.stl.entity.Traveler;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.List;
 
 @Controller
-@RequestMapping(value = "/author")
-public class AuthorController {
-
+@RequestMapping(value = "/register")
+public class RegisterController {
     @Autowired
-    private TravelerDataDB authorDB;
-
-    @Autowired
-    private ArticleDB articleDB;
+    private TravelerDB travelerDB;
 
     @RequestMapping(value = {"", "/"}, method = RequestMethod.POST)
-    public ModelAndView createTraveler(@RequestBody @ModelAttribute("traveler") TravelerData traveler,
+    public ModelAndView createTraveler(@RequestBody @ModelAttribute("traveler") Traveler traveler,
                                        ModelMap model,
                                        HttpServletRequest request,
                                        HttpServletResponse response) {
@@ -37,7 +34,7 @@ public class AuthorController {
 
         } else {
             try {
-                authorDB.save(traveler);
+                travelerDB.save(traveler);
 
                 mav.addObject("status", "success");
                 mav.setViewName("/traveler/createsuccess");
@@ -57,27 +54,7 @@ public class AuthorController {
 
     @RequestMapping(value = {"", "/"}, method = RequestMethod.GET)
     public ModelAndView createAuthorForm() {
-        return new ModelAndView("/traveler/create", "traveler", new TravelerData());
+        return new ModelAndView("/traveler/create", "traveler", new Traveler());
     }
 
-    @RequestMapping(value = "/{userId}", method = RequestMethod.GET)
-    public ModelAndView getAuthorPage(@PathVariable String userId,
-                                    HttpServletRequest request,
-                                    HttpServletResponse response) {
-        ModelAndView mav = new ModelAndView();
-
-        TravelerData traveler = authorDB.getByUsername(userId);
-
-        if(traveler != null) {
-            List<Article> article = articleDB.getByTravler(traveler);
-
-            mav.addObject("author", traveler);
-            mav.addObject("articles", article);
-            mav.setViewName("/traveler/page");
-        } else {
-            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
-        }
-
-        return mav;
-    }
 }
