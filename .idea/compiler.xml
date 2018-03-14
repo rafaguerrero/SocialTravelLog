@@ -21,6 +21,7 @@
         <module name="STLFrontend" />
         <module name="STLHub" />
         <module name="STLSecurity" />
+        <module name="STLTags" />
         <module name="STLWeb" />
       </profile>
     </annotationProcessing>
@@ -31,6 +32,7 @@
       <module name="STLFrontend" target="1.6" />
       <module name="STLHub" target="1.6" />
       <module name="STLSecurity" target="1.6" />
+      <module name="STLTags" target="1.6" />
       <module name="STLWeb" target="1.6" />
     </bytecodeTargetLevel>
   </component>

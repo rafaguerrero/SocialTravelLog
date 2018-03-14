@@ -6,7 +6,7 @@
 
     <div class="article__metadata">
         <div class="article__metadata__author">
-            By <a href="/author/${article.author.userId}" target="_self">${article.author.name}</a>
+            By <a href="/author/${article.traveler.username}" target="_self">${article.traveler.name}</a>
         </div>
         <div class="article__metadata__author">
             Tags:

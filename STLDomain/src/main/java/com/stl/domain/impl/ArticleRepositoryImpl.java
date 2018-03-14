@@ -2,7 +2,7 @@ package com.stl.domain.impl;
 
 import com.stl.domain.ArticleRepository;
 import com.stl.entity.Article;
-import com.stl.entity.Author;
+import com.stl.entity.TravelerData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -38,11 +38,10 @@ public class ArticleRepositoryImpl implements ArticleRepository {
     }
 
     @Override
-    public List<Article> findByAuthor(Author author) {
-        Query query = query(where("author").is(author));
+    public List<Article> findByTraveler(TravelerData traveler) {
+        Query query = query(where("author").is(traveler));
         query.with(new Sort(Sort.Direction.DESC, "creationTime"));
         query.limit(MAX_ARTICLES_PAGE);
-
 
         return mongoTemplate.find(query, Article.class);
     }

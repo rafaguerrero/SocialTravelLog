@@ -2,9 +2,9 @@ package com.stl.web.services;
 
 import org.springframework.dao.DuplicateKeyException;
 import com.stl.db.ArticleDB;
-import com.stl.db.AuthorDB;
+import com.stl.db.TravelerDataDB;
 import com.stl.entity.Article;
-import com.stl.entity.Author;
+import com.stl.entity.TravelerData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -19,36 +19,36 @@ import java.util.List;
 public class AuthorController {
 
     @Autowired
-    private AuthorDB authorDB;
+    private TravelerDataDB authorDB;
 
     @Autowired
     private ArticleDB articleDB;
 
     @RequestMapping(value = {"", "/"}, method = RequestMethod.POST)
-    public ModelAndView createAuthor(@RequestBody @ModelAttribute("author") Author author,
-                                     ModelMap model,
-                                     HttpServletRequest request,
-                                     HttpServletResponse response) {
+    public ModelAndView createTraveler(@RequestBody @ModelAttribute("traveler") TravelerData traveler,
+                                       ModelMap model,
+                                       HttpServletRequest request,
+                                       HttpServletResponse response) {
         ModelAndView mav = new ModelAndView();
 
-        if (author == null) {
+        if (traveler == null) {
             mav.addObject("status", "genericError");
-            mav.setViewName("/author/create");
+            mav.setViewName("/traveler/create");
 
         } else {
             try {
-                authorDB.save(author);
+                authorDB.save(traveler);
 
                 mav.addObject("status", "success");
-                mav.setViewName("/author/createsuccess");
+                mav.setViewName("/traveler/createsuccess");
                 response.setStatus(HttpServletResponse.SC_CREATED);
 
             } catch (DuplicateKeyException e) {
                 mav.addObject("status", "authorAlreadyExists");
-                mav.setViewName("/author/create");
+                mav.setViewName("/traveler/create");
             } catch (Exception e) {
                 mav.addObject("status", "genericError");
-                mav.setViewName("/author/create");
+                mav.setViewName("/traveler/create");
             }
         }
 
@@ -57,7 +57,7 @@ public class AuthorController {
 
     @RequestMapping(value = {"", "/"}, method = RequestMethod.GET)
     public ModelAndView createAuthorForm() {
-        return new ModelAndView("/author/create", "author", new Author());
+        return new ModelAndView("/traveler/create", "traveler", new TravelerData());
     }
 
     @RequestMapping(value = "/{userId}", method = RequestMethod.GET)
@@ -66,14 +66,14 @@ public class AuthorController {
                                     HttpServletResponse response) {
         ModelAndView mav = new ModelAndView();
 
-        Author author = authorDB.getByUserId(userId);
+        TravelerData traveler = authorDB.getByUsername(userId);
 
-        if(author != null) {
-            List<Article> article = articleDB.getByAuthor(author);
+        if(traveler != null) {
+            List<Article> article = articleDB.getByTravler(traveler);
 
-            mav.addObject("author", author);
+            mav.addObject("author", traveler);
             mav.addObject("articles", article);
-            mav.setViewName("/author/page");
+            mav.setViewName("/traveler/page");
         } else {
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
         }

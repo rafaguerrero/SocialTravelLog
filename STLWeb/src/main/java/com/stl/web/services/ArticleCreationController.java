@@ -1,9 +1,9 @@
 package com.stl.web.services;
 
 import com.stl.db.ArticleDB;
-import com.stl.db.AuthorDB;
+import com.stl.db.TravelerDataDB;
 import com.stl.entity.Article;
-import com.stl.entity.Author;
+import com.stl.entity.TravelerData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 public class ArticleCreationController {
 
     @Autowired
-    private AuthorDB authorDB;
+    private TravelerDataDB travelerDataDB;
 
     @Autowired
     private ArticleDB articleDB;
@@ -31,12 +31,12 @@ public class ArticleCreationController {
                             HttpServletRequest request,
                             HttpServletResponse response) {
 
-        Author author = authorDB.getByUserId(userId);
+        TravelerData traveler = travelerDataDB.getByUsername(userId);
         ModelAndView mav = new ModelAndView();
         int status;
 
-        if(author != null) {
-            article.setAuthor(author);
+        if(traveler != null) {
+            article.setTraveler(traveler);
             articleDB.create(article);
 
             status = HttpServletResponse.SC_CREATED;
@@ -54,11 +54,11 @@ public class ArticleCreationController {
                                 HttpServletRequest request,
                                 HttpServletResponse response) {
 
-        Author author = authorDB.getByUserId(userId);
+        TravelerData traveler = travelerDataDB.getByUsername(userId);
 
         ModelAndView mav = new ModelAndView();
 
-        if(author == null) {
+        if(traveler == null) {
             int errorStatus = HttpServletResponse.SC_NOT_FOUND;
 
             response.setStatus(errorStatus);

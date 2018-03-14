@@ -17,6 +17,7 @@
         <module>STLDB</module>
         <module>STLFrontend</module>
         <module>STLSecurity</module>
+        <module>STLTags</module>
     </modules>
 
     <properties>
@@ -29,6 +30,7 @@
         <slf4j.version>1.7.7</slf4j.version>
         <logback.version>1.1.2</logback.version>
         <jsoup.version>1.7.2</jsoup.version>
+        <db.h2>1.4.195</db.h2>
 
         <servlet.version>3.0.1</servlet.version>
         <aspectj.version>1.7.3</aspectj.version>
@@ -182,6 +184,18 @@
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-mongodb</artifactId>
             <version>${spring.data.mongo.version}</version>
+        </dependency>
+
+        <!-- Database -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>${db.h2}</version>
         </dependency>
 
         <!-- Spring Security Dependencies -->

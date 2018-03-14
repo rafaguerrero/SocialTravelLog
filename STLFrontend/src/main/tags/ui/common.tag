@@ -1,3 +1,4 @@
+<%@taglib prefix="ui" tagdir="/WEB-INF/tags/ui" %>
 
 <div class="ui">
     <div class="uiComponent topUiComponent">
@@ -5,9 +6,7 @@
 
         <div class="topUiComponent__search"></div>
 
-        <div class="topUiComponent__login">
-            <a href="/login">Login/Register</a>
-        </div>
+        <ui:login />
     </div>
 
     <div class="uiComponent leftUiComponent">

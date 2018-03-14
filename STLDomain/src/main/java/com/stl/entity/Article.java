@@ -15,7 +15,7 @@ public class Article {
     protected String id;
 
     @DBRef
-    private Author author;
+    private TravelerData traveler;
 
     @Indexed(unique = true)
     private String url;
@@ -34,12 +34,12 @@ public class Article {
         this.id = id;
     }
 
-    public Author getAuthor() {
-        return author;
+    public TravelerData getTraveler() {
+        return traveler;
     }
 
-    public void setAuthor(Author author) {
-        this.author = author;
+    public void setTraveler(TravelerData traveler) {
+        this.traveler = traveler;
         generateUrl();
     }
 
@@ -77,8 +77,8 @@ public class Article {
     }
 
     private void generateUrl() {
-        if(this.url == null && this.author != null && this.title != null) {
-            this.url = UrlUtils.generateUrl(this.title, this.author.getUserId());
+        if(this.url == null && this.traveler != null && this.title != null) {
+            this.url = UrlUtils.generateUrl(this.title, this.traveler.getUsername());
         }
     }
 

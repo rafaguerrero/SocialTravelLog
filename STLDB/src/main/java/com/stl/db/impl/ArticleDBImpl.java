@@ -2,9 +2,8 @@ package com.stl.db.impl;
 
 import com.stl.db.ArticleDB;
 import com.stl.domain.ArticleRepository;
-import com.stl.domain.AuthorRepository;
 import com.stl.entity.Article;
-import com.stl.entity.Author;
+import com.stl.entity.TravelerData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -28,8 +27,8 @@ public class ArticleDBImpl implements ArticleDB {
     }
 
     @Override
-    public List<Article> getByAuthor(Author author) {
-        return articleRepository.findByAuthor(author);
+    public List<Article> getByTravler(TravelerData traveler) {
+        return articleRepository.findByTraveler(traveler);
     }
 
     @Override
