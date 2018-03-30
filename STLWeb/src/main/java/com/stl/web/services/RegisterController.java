@@ -1,9 +1,11 @@
 package com.stl.web.services;
 
 import com.stl.db.TravelerDB;
+import com.stl.db.UserDB;
 import com.stl.entity.Traveler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -18,14 +20,22 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 @RequestMapping(value = "/register")
 public class RegisterController {
+
     @Autowired
     private TravelerDB travelerDB;
+
+    @Autowired
+    private UserDB userDB;
+
+    @Autowired
+    private UserService userService;
 
     @RequestMapping(value = {"", "/"}, method = RequestMethod.POST)
     public ModelAndView createTraveler(@RequestBody @ModelAttribute("traveler") Traveler traveler,
                                        ModelMap model,
                                        HttpServletRequest request,
                                        HttpServletResponse response) {
+
         ModelAndView mav = new ModelAndView();
 
         if (traveler == null) {
@@ -36,15 +46,15 @@ public class RegisterController {
             try {
                 travelerDB.save(traveler);
 
+                User user = userService.createUserFromTraveler(traveler, "ROLE_USER");
+                userDB.save(user);
+                userService.logIn(user);
+
                 mav.addObject("status", "success");
                 mav.setViewName("/traveler/createsuccess");
                 response.setStatus(HttpServletResponse.SC_CREATED);
-
-            } catch (DuplicateKeyException e) {
-                mav.addObject("status", "authorAlreadyExists");
-                mav.setViewName("/traveler/create");
             } catch (Exception e) {
-                mav.addObject("status", "genericError");
+                mav.addObject("status", getErrorStatus(e));
                 mav.setViewName("/traveler/create");
             }
         }
@@ -52,9 +62,12 @@ public class RegisterController {
         return mav;
     }
 
+    private String getErrorStatus(Exception e) {
+        return e instanceof DuplicateKeyException ? "authorAlreadyExists" : "genericError";
+    }
+
     @RequestMapping(value = {"", "/"}, method = RequestMethod.GET)
     public ModelAndView createAuthorForm() {
         return new ModelAndView("/traveler/create", "traveler", new Traveler());
     }
-
 }

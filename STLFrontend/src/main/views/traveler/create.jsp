@@ -19,6 +19,10 @@
                 <form:input type="text" path="username"/>
             </div>
             <div class="creation__form__row">
+                <span>Password:</span><br/>
+                <form:input type="password" path="password"/>
+            </div>
+            <div class="creation__form__row">
                 <span>Full name:</span><br/>
                 <form:input type="text" path="name" />
             </div>

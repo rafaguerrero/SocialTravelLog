@@ -27,11 +27,9 @@
             </bean>
         </constructor-arg>
         <constructor-arg name="databaseName" value="stl"/>
-
         <property name="writeConcern">
             <util:constant static-field="com.mongodb.WriteConcern.SAFE"/>
         </property>
-
         <property name="writeResultChecking" value="EXCEPTION"/>
     </bean>
 

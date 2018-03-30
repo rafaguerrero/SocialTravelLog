@@ -1,6 +1,6 @@
 package com.stl.domain.impl;
 
-import com.stl.domain.TravelerDataRepository;
+import com.stl.domain.TravelerRepository;
 import com.stl.entity.Traveler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -11,7 +11,7 @@ import static org.springframework.data.mongodb.core.query.Criteria.where;
 import static org.springframework.data.mongodb.core.query.Query.query;
 
 @Repository
-public class TravelerDataRepositoryImpl implements TravelerDataRepository {
+public class TravelerRepositoryImpl implements TravelerRepository {
     @Autowired
     private MongoTemplate mongoTemplate;
 
