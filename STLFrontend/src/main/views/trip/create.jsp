@@ -2,7 +2,7 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib prefix="structure" tagdir="/WEB-INF/tags/structure" %>
 
-<structure:body className="article article--creation" title="STL - Article Creation">
+<structure:body className="trip trip--creation" title="STL - Trip Creation">
     <form:form method="post" class="creation__form" modelAttribute="trip">
         <div class="creation__form__row">
             <span>Title:</span>
@@ -11,6 +11,10 @@
         <div class="creation__form__row">
             <span>Body:</span>
             <input type="text" name="body" value="Body">
+        </div>
+        <div class="creation__form__row">
+            <span>Tags:</span>
+            <input type="text" name="tags" value="Tags">
         </div>
         <div class="creation__form__row">
             <input type="submit" value="Submit">
