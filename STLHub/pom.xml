@@ -68,6 +68,11 @@
             <artifactId>STLWeb</artifactId>
             <version>1.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.stl</groupId>
+            <artifactId>STLTags</artifactId>
+            <version>1.0</version>
+        </dependency>
     </dependencies>
 
 </project>

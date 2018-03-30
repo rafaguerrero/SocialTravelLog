@@ -43,6 +43,7 @@
     <orderEntry type="module" module-name="STLWeb" />
     <orderEntry type="module" module-name="STLDB" />
     <orderEntry type="module" module-name="STLSecurity" />
+    <orderEntry type="module" module-name="STLTags" />
     <orderEntry type="library" name="Maven: ch.qos.logback:logback-classic:1.1.2" level="project" />
     <orderEntry type="library" name="Maven: ch.qos.logback:logback-access:1.1.2" level="project" />
     <orderEntry type="library" name="Maven: ch.qos.logback:logback-core:1.1.2" level="project" />
