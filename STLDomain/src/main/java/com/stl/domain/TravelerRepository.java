@@ -2,7 +2,7 @@ package com.stl.domain;
 
 import com.stl.entity.Traveler;
 
-public interface TravelerDataRepository {
+public interface TravelerRepository {
     Traveler findByUsername(String username);
     Traveler save(Traveler traveler);
 }
