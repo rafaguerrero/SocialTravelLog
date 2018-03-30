@@ -38,6 +38,15 @@ public class TripRepositoryImpl implements TripRepository {
     }
 
     @Override
+    public List<Trip> findByTag(String tag) {
+        Query query = query(where("tags").all(tag));
+        query.with(new Sort(Sort.Direction.DESC, "creationTime"));
+        query.limit(MAX_ARTICLES_PAGE);
+
+        return mongoTemplate.find(query, Trip.class);
+    }
+
+    @Override
     public List<Trip> findByTraveler(Traveler traveler) {
         Query query = query(where("traveler").is(traveler));
         query.with(new Sort(Sort.Direction.DESC, "creationTime"));

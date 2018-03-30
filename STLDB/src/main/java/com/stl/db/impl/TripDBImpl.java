@@ -22,6 +22,11 @@ public class TripDBImpl implements TripDB {
     }
 
     @Override
+    public List<Trip> getByTag(String tag) {
+        return tripRepository.findByTag(tag);
+    }
+
+    @Override
     public Trip getByUrl(String url) {
         return tripRepository.findByUrl(url);
     }

@@ -11,4 +11,5 @@ public interface TripRepository {
     List<Trip> findByTraveler(Traveler traveler);
     Trip findByUrl(String url);
     Trip save(Trip trip);
+    List<Trip> findByTag(String tag);
 }
