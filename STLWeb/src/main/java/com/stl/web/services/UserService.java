@@ -22,7 +22,7 @@ public class UserService {
 
     public User createUserFromTraveler(Traveler traveler, String role) {
         List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-        authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
+        authorities.add(new SimpleGrantedAuthority(role));
         return new User(traveler.getUsername(), passwordEncoder.encode(traveler.getPassword()), authorities);
     }
 
