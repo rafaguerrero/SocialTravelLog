@@ -1,17 +1,13 @@
 package com.stl.tags;
 
 import com.stl.db.TravelerDB;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.stl.entity.Traveler;
 
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.PageContext;
-import javax.servlet.jsp.tagext.SimpleTagSupport;
 import java.io.IOException;
 
-public class TravelerDataTag extends SimpleTagSupport {
-
-    @Autowired
-    private TravelerDB travelerDB;
+public class TravelerDataTag extends STLTag {
 
     private String username;
 
@@ -25,8 +21,14 @@ public class TravelerDataTag extends SimpleTagSupport {
 
     @Override
     public void doTag() throws JspException, IOException {
-        getJspContext().setAttribute("traveler", travelerDB.getByUsername(username), PageContext.PAGE_SCOPE);
-        super.doTag();
+        Traveler traveler = getTravelerDB().getByUsername(username);
+
+        getJspContext().setAttribute("traveler", traveler, PageContext.PAGE_SCOPE);
+        renderJspBody();
         getJspContext().removeAttribute("traveler", PageContext.PAGE_SCOPE);
+    }
+
+    private TravelerDB getTravelerDB() {
+        return (TravelerDB) getFromApplicationContext(TravelerDB.class);
     }
 }

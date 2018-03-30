@@ -1,5 +1,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@taglib prefix="tags" uri="http://dev.stl.com/jsp/stl/tags" %>
 
 <c:set var="user" value="${pageContext.request.userPrincipal}" scope="page"/>
 
@@ -13,7 +14,9 @@
 
         <c:otherwise>
             <div class="stl-user">
-                ${user.name}
+                <tags:travelerData username="${user.name}">
+                    ${traveler.name}
+                </tags:travelerData>
             </div>
 
             <form:form action="/logout" method="post">

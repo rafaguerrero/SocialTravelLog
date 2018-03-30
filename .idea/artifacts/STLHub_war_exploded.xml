@@ -7,6 +7,9 @@
           <element id="module-output" name="STLHub" />
         </element>
         <element id="directory" name="lib">
+          <element id="archive" name="STLHub-1.0.jar">
+            <element id="module-output" name="STLHub" />
+          </element>
           <element id="archive" name="STLDomain-1.0.jar">
             <element id="module-output" name="STLDomain" />
           </element>
@@ -18,6 +21,9 @@
           </element>
           <element id="archive" name="STLSecurity-1.0.jar">
             <element id="module-output" name="STLSecurity" />
+          </element>
+          <element id="archive" name="STLTags-1.0.jar">
+            <element id="module-output" name="STLTags" />
           </element>
           <element id="library" level="project" name="Maven: ch.qos.logback:logback-classic:1.1.2" />
           <element id="library" level="project" name="Maven: ch.qos.logback:logback-access:1.1.2" />
