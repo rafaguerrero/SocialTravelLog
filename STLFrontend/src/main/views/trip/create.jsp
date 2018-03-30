@@ -3,7 +3,7 @@
 <%@taglib prefix="structure" tagdir="/WEB-INF/tags/structure" %>
 
 <structure:body className="article article--creation" title="STL - Article Creation">
-    <form:form method="post" class="creation__form">
+    <form:form method="post" class="creation__form" modelAttribute="trip">
         <div class="creation__form__row">
             <span>Title:</span>
             <input type="text" name="title" value="Title">
