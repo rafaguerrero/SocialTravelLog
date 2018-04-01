@@ -3,6 +3,12 @@
 <%@taglib prefix="structure" tagdir="/WEB-INF/tags/structure" %>
 
 <structure:body className="trip trip--creation" title="STL - Trip Creation">
+    <c:choose>
+        <c:when test="${errorStatus == 'tripAlreadyExists'}">
+            <div class="author__creation__error">Trip already exists</div>
+        </c:when>
+    </c:choose>
+
     <form:form method="post" class="creation__form" modelAttribute="trip">
         <div class="creation__form__row">
             <span>Title:</span>

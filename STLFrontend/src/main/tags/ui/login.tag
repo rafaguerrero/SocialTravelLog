@@ -7,6 +7,10 @@
 <div class="topUiComponent__login">
     <c:choose>
         <c:when test="${empty user}">
+            <form:form action="/register" method="get">
+                <input type="submit" value="Register" />
+            </form:form>
+
             <form:form action="/login" method="post">
                 <input type="submit" value="Login" />
             </form:form>

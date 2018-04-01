@@ -1,5 +1,6 @@
 package com.stl.web.services;
 
+import org.springframework.dao.DuplicateKeyException;
 import com.stl.db.TravelerDB;
 import com.stl.db.TripDB;
 import com.stl.entity.Traveler;
@@ -30,17 +31,19 @@ public class PublishController {
         Traveler traveler = travelerDB.getByUsername(userId);
 
         if(traveler == null) {
-            int errorStatus = HttpServletResponse.SC_NOT_FOUND;
-
-            response.setStatus(errorStatus);
-            ModelAndView mav = new ModelAndView();
-            mav.addObject("errorStatus", errorStatus);
-            mav.setViewName("/error");
-            return mav;
+            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+            return null;
         }
 
-        trip.setTraveler(traveler);
-        tripDB.create(trip);
+        try {
+            trip.setTraveler(traveler);
+            tripDB.create(trip);
+        } catch(DuplicateKeyException e) {
+            ModelAndView mav = new ModelAndView();
+            mav.addObject("errorStatus", "tripAlreadyExists");
+            mav.setViewName("/trip/create");
+            return mav;
+        }
 
         return new ModelAndView("redirect:" + trip.getUrl());
     }
@@ -56,12 +59,8 @@ public class PublishController {
         mav.addObject("trip", new Trip());
 
         if(traveler == null) {
-            int errorStatus = HttpServletResponse.SC_NOT_FOUND;
-
-            response.setStatus(errorStatus);
-            mav.addObject("errorStatus", errorStatus);
-            mav.setViewName("/error");
-            return mav;
+            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+            return null;
         }
 
         mav.setViewName("/trip/create");
