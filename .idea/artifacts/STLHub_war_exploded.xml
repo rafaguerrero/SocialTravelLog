@@ -50,6 +50,7 @@
           <element id="library" level="project" name="Maven: org.mongodb:mongo-java-driver:2.12.5" />
           <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:4.3.14.RELEASE" />
           <element id="library" level="project" name="Maven: com.h2database:h2:1.4.195" />
+          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:6.0.6" />
           <element id="library" level="project" name="Maven: org.springframework.security:spring-security-web:4.2.4.RELEASE" />
           <element id="library" level="project" name="Maven: aopalliance:aopalliance:1.0" />
           <element id="library" level="project" name="Maven: org.springframework.security:spring-security-core:4.2.4.RELEASE" />
