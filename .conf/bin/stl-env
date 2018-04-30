@@ -71,7 +71,7 @@ do
             ;;
 
         h)
-            help
+            usage
             exit 1
             ;;
 

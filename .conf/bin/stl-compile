@@ -1,17 +1,49 @@
 #!/bin/bash
 
 all() {
-    echo "############################### COMPILING ALL ###############################"
+    echo "########################## COMPILING ALL ###########################"
     gulp --gulpfile $STL_HOME/STLFrontend/build/gulpfile.js
     echo "############################### DONE ###############################"
 }
 
-while getopts ":v:a" OPTION
+dependencies() {
+    echo "###################### REIMPORTING DEPENDENCIES ####################"
+    oldPath=$(pwd)
+    cd $STL_HOME/STLFrontend/build
+    npm i $STL_HOME/STLFrontend/build
+    cd $oldPath
+    echo "############################### DONE ###############################"
+}
+
+usage() {
+read -d '' HELP <<"BLOCK"
+\\033[0;37mHELP \\033[0m
+   ~> stl-compile [options]
+
+\\033[0;37mDESCRIPTION \\033[0m
+   STL
+
+\\033[0;37mOPTIONS \\033[0m
+   -h     Help
+   -a     Compile all
+   -d     Reinstall all dependencies
+
+BLOCK
+echo -e "$HELP"
+}
+
+while getopts ":v:adh" OPTION
 do
      case $OPTION in
         a)
             all
             ;;
-
+        d)
+            dependencies
+            ;;
+        h)
+            usage
+            exit 1
+            ;;
      esac
 done
