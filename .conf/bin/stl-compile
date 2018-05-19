@@ -1,12 +1,24 @@
 #!/bin/bash
 
-all() {
-    echo "########################## COMPILING ALL ###########################"
-    gulp --gulpfile $STL_HOME/STLFrontend/build/gulpfile.js
+dev() {
+    echo "########################## COMPILING DEVELOPMENT ###########################"
+    oldPath=$(pwd)
+    cd $STL_HOME/STLFrontend/build
+    npm run dev
+    cd $oldPath
     echo "############################### DONE ###############################"
 }
 
-dependencies() {
+pro() {
+    echo "########################## COMPILING PRODUCTION ###########################"
+    oldPath=$(pwd)
+    cd $STL_HOME/STLFrontend/build
+    npm run build
+    cd $oldPath
+    echo "############################### DONE ###############################"
+}
+
+install() {
     echo "###################### REIMPORTING DEPENDENCIES ####################"
     oldPath=$(pwd)
     cd $STL_HOME/STLFrontend/build
@@ -25,21 +37,25 @@ read -d '' HELP <<"BLOCK"
 
 \\033[0;37mOPTIONS \\033[0m
    -h     Help
-   -a     Compile all
-   -d     Reinstall all dependencies
+   -p     Compile production mode
+   -d     Compile development mode
+   -i     Reinstall all dependencies
 
 BLOCK
 echo -e "$HELP"
 }
 
-while getopts ":v:adh" OPTION
+while getopts ":v:pdph" OPTION
 do
      case $OPTION in
-        a)
-            all
+        p)
+            pro
             ;;
         d)
-            dependencies
+            dev
+            ;;
+        i)
+            install
             ;;
         h)
             usage

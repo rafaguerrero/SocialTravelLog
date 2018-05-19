@@ -10,6 +10,4 @@
 <head>
     <title>${title}</title>
     <script src="/statics/js/main.js" async></script>
-    <link href="/statics/css/main.css" rel="stylesheet"/>
-    <link href="/statics/css/homepage.css" rel="stylesheet"/>
 </head>
