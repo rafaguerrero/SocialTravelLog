@@ -20,4 +20,9 @@ public class TravelerDBImpl implements TravelerDB {
     public void save(Traveler traveler) {
         travelerRepository.save(traveler);
     }
+
+    @Override
+    public void delete(String username) {
+        travelerRepository.delete(username);
+    }
 }

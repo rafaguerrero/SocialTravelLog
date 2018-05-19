@@ -6,4 +6,5 @@ public interface TravelerDB {
     Traveler getByUsername(String username);
 
     void save(Traveler traveler);
+    void delete(String username);
 }

@@ -15,4 +15,9 @@ public class UserDBImpl implements UserDB {
     public void save(User user) {
         jdbcUserDetailsManager.createUser(user);
     }
+
+    @Override
+    public void delete(User user) {
+        jdbcUserDetailsManager.deleteUser(user.getUsername());
+    }
 }
