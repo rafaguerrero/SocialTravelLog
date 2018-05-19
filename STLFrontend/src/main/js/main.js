@@ -1,4 +1,5 @@
 
+/*
 import ComponentsInitializer from 'ComponentsInitializer';
 
 function main() {
@@ -6,3 +7,9 @@ function main() {
 }
 
 main();
+
+*/
+
+import '../scss/main.scss';
+
+console.log("----- TESTING SHIT --------");
