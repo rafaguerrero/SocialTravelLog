@@ -10,6 +10,9 @@
             <c:when test="${param.error != null}">
                 <p style="color: red;">Your login attempt was not successful</p>
             </c:when>
+            <c:when test="${param.delete != null}">
+                <p>You account has successfuly been deleted</p>
+            </c:when>
             <c:when test="${param.logout != null}">
                 <p>You successfuly logged out</p>
             </c:when>
