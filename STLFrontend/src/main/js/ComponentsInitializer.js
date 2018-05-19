@@ -1,7 +1,7 @@
 
 import * as components from 'components';
 
-module.exports = {
+export default {
     initilize() {
         document.querySelectorAll("[data-component-name]").forEach((element) => {
             let name = element.getAttribute("data-component-name"),

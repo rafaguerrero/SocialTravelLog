@@ -1,22 +1,26 @@
 
-var path = require('path');
-
-var projectRoot = __dirname + "/../src/main/js/";
-
 module.exports = {
-    resolve: {
-        alias: {},
-        "root": projectRoot
-    },
-    resolveLoader: {
-        root: __dirname + "/node_modules"
+    entry: './../src/main/js/main.js',
+    output: {
+        filename: "./../../src/main/resources/[name].js"
     },
     module: {
-        loaders: [
-            { test: /\.js$/, exclude: /node_modules|webapp\/resources/, loader: "babel-loader"}
+        rules: [
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: "babel-loader"
+                }
+            },
+            {
+                test: /\.scss$/,
+                use: [
+                    "style-loader", // creates style nodes from JS strings
+                    "css-loader", // translates CSS into CommonJS
+                    "sass-loader" // compiles Sass to CSS
+                ]
+            }
         ]
-    },
-    output: {
-        filename: "[name].js"
     }
 };
