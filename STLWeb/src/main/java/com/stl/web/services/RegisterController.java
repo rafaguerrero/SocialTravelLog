@@ -40,7 +40,7 @@ public class RegisterController {
 
         if (traveler == null) {
             mav.addObject("status", "genericError");
-            mav.setViewName("/traveler/create");
+            mav.setViewName("/traveler/register");
 
         } else {
             try {
@@ -51,11 +51,12 @@ public class RegisterController {
                 userService.logIn(user);
 
                 mav.addObject("status", "success");
-                mav.setViewName("/traveler/createsuccess");
+                mav.addObject("traveler", traveler);
+                mav.setViewName("/traveler/register.success");
                 response.setStatus(HttpServletResponse.SC_CREATED);
             } catch (Exception e) {
                 mav.addObject("status", getErrorStatus(e));
-                mav.setViewName("/traveler/create");
+                mav.setViewName("/traveler/register");
             }
         }
 
@@ -68,6 +69,6 @@ public class RegisterController {
 
     @RequestMapping(value = {"", "/"}, method = RequestMethod.GET)
     public ModelAndView createAuthorForm() {
-        return new ModelAndView("/traveler/create", "traveler", new Traveler());
+        return new ModelAndView("/traveler/register", "traveler", new Traveler());
     }
 }

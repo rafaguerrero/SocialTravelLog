@@ -5,11 +5,7 @@
 
 <div class="ui">
     <div class="uiComponent topUiComponent">
-        <img class="topUiComponent__logo" src="/statics/images/logo.png"/>
-
-        <div class="topUiComponent__search"></div>
-
-        <ui:login />
+        <c:import url="/WEB-INF/views/interface/header/default.jsp"/>
     </div>
 
     <div class="uiComponent leftUiComponent">

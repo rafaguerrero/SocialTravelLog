@@ -1,0 +1,16 @@
+/**
+ * Created by rafaelguerreroclemente
+ */
+
+@import "components/login";
+@import "components/logo";
+@import "components/search";
+
+.topUiComponent {
+  top: 0;
+  left: 0;
+  right: 0;
+  height: $topUiComponentHeight;
+  border-bottom: 1px solid black;
+  background-color: beige;
+}

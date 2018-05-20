@@ -2,7 +2,7 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib prefix="structure" tagdir="/WEB-INF/tags/structure" %>
 
-<structure:body className="author author--creation" title="STL - Author Creation">
+<structure:body className="traveler traveler--creation" title="STL - Traveler Registration">
     <c:choose>
         <c:when test="${status == 'genericError'}">
             <div class="author__creation__error">There was an error</div>
