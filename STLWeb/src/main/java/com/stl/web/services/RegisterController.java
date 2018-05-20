@@ -48,7 +48,10 @@ public class RegisterController {
 
                 User user = userService.createUserFromTraveler(traveler, "ROLE_USER");
                 userDB.save(user);
-                userService.logIn(user);
+
+                //userService.logIn(user);
+
+                request.login(user.getUsername(), user.getPassword());
 
                 mav.addObject("status", "success");
                 mav.addObject("traveler", traveler);

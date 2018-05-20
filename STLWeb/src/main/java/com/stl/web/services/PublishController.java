@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @Controller
+@RequestMapping(value = {"/trip"}, method = RequestMethod.POST)
 public class PublishController {
 
     @Autowired
@@ -22,7 +23,7 @@ public class PublishController {
     @Autowired
     private TripDB tripDB;
 
-    @RequestMapping(value = {"/{userId}/new_trip"}, method = RequestMethod.POST)
+    @RequestMapping(value = {"/{userId}"}, method = RequestMethod.POST)
     public ModelAndView saveTrip(@PathVariable String userId,
                                     @RequestBody @ModelAttribute("trip") Trip trip,
                                     HttpServletRequest request,
@@ -48,7 +49,7 @@ public class PublishController {
         return new ModelAndView("redirect:" + trip.getUrl());
     }
 
-    @RequestMapping(value = {"/{userId}/new_trip"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/{userId}"}, method = RequestMethod.GET)
     public ModelAndView createTrip(@PathVariable String userId,
                                         HttpServletRequest request,
                                         HttpServletResponse response) {

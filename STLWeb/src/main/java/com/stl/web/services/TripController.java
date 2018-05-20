@@ -8,27 +8,26 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @Controller
-@RequestMapping(value = "/{userId}/{path}")
+@RequestMapping(value = "/stl")
 public class TripController {
 
     @Autowired
     private TripDB tripDB;
 
-    @RequestMapping(value = "")
-    public ModelAndView showArticle(@PathVariable String userId,
+    @RequestMapping(value = "/{username}/{path}")
+    public ModelAndView showArticle(@PathVariable String username,
                                     @PathVariable String path,
-                                    HttpServletRequest request,
                                     HttpServletResponse response) {
 
         ModelAndView mav = new ModelAndView();
 
-        Trip trip = tripDB.getByUrl("/" + userId + "/" + path);
+        Trip trip = tripDB.getByUrl("/" + username + "/" + path);
         if(trip != null) {
-            mav.addObject("article", trip);
+            mav.addObject("traveler", trip.getTraveler());
+            mav.addObject("trip", trip);
 
             mav.setViewName("/trip/page");
         } else {
