@@ -1,17 +1,14 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="structure" tagdir="/WEB-INF/tags/structure" %>
+<%@taglib prefix="trips" tagdir="/WEB-INF/tags/trips" %>
 
-<structure:body className="author author--page" title="STL - ${author.name}">
-    <h1>${author.name}</h1>
+<structure:body className="traveler traveler--page" title="STL - ${traveler.name}">
+    <h1>${traveler.name}</h1>
 
-    <h2>Articles</h2>
+    <h2>Trips</h2>
     <hr/>
 
-    <c:forEach items="${articles}" var="article">
-        <div class="author__article">
-            <h3>${article.title}</h3>
-            <h4>${article.url}</h4>
-            <div>${article.body}</div>
-        </div>
+    <c:forEach items="${trips}" var="trip">
+        <trips:render trip="${trip}"/>
     </c:forEach>
 </structure:body>

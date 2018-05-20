@@ -14,6 +14,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
+@RequestMapping(value = "/d", method = RequestMethod.POST)
 public class DeleteController {
 
     @Autowired
@@ -22,7 +23,7 @@ public class DeleteController {
     @Autowired
     private UserDB userDB;
 
-    @RequestMapping(value = "/{userId}/delete", method = RequestMethod.POST)
+    @RequestMapping(value = "/{userId}", method = RequestMethod.POST)
     public ModelAndView deleteTraveler(Authentication authentication,
                                        HttpServletRequest request) throws ServletException {
 
@@ -35,7 +36,7 @@ public class DeleteController {
         return new ModelAndView("/traveler/delete.success");
     }
 
-    @RequestMapping(value = "/{userId}/delete", method = RequestMethod.GET)
+    @RequestMapping(value = "/{userId}", method = RequestMethod.GET)
     public ModelAndView deleteTravelerForm() {
         return new ModelAndView("/traveler/delete");
     }

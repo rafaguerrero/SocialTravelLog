@@ -10,6 +10,7 @@ main();
 
 */
 
+import '../../../build/external/bootstrap.min.css';
 import '../scss/main.scss';
 
 console.log("----- TESTING SHIT --------");

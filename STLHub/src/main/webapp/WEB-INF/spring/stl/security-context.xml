@@ -18,7 +18,7 @@
     <http use-expressions="true">
         <intercept-url pattern="/favicon.ico" access="hasRole('ROLE_ANONYMOUS')"/>
         <intercept-url pattern="/resources/**" access="permitAll()"/>
-        <intercept-url pattern="/hub/admin" access="hasRole('ROLE_ADMIN')"/>
+        <intercept-url pattern="/admin" access="hasRole('ROLE_ADMIN')"/>
         <intercept-url pattern="/**" access="permitAll()"/>
 
         <form-login login-page="/login"
