@@ -16,7 +16,7 @@ public class HomepageController {
     @RequestMapping(value = "")
     public ModelAndView getHomepage() {
         ModelAndView mav = new ModelAndView();
-        mav.addObject("trips", tripDB.getLatestTrips());
+        mav.addObject("trips", tripDB.getLatestsTrips());
         mav.setViewName("/home");
         return mav;
     }

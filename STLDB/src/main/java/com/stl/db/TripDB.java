@@ -7,7 +7,8 @@ import java.util.List;
 
 public interface TripDB {
     Trip getByUrl(String url);
-    List<Trip> getLatestTrips();
+    List<Trip> getLatestsTrips();
+    List<Trip> getLatestsTrips(List<String> travelers);
     List<Trip> getByTraveler(Traveler traveler);
     List<Trip> getByTraveler(Traveler traveler, int numberOfTrips);
     List<Trip> getByTag(String tag);
