@@ -7,9 +7,13 @@ import java.util.List;
 
 
 public interface TripRepository {
+    Trip save(Trip trip);
+
+    Trip findByUrl(String url);
     List<Trip> findLatestByCreationDate();
     List<Trip> findByTraveler(Traveler traveler);
-    Trip findByUrl(String url);
-    Trip save(Trip trip);
+    List<Trip> findByTraveler(Traveler traveler, int numberOfTrips);
     List<Trip> findByTag(String tag);
+
+    void removeAllTripsByTraveler(Traveler traveler);
 }

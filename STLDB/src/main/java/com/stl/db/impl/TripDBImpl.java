@@ -32,6 +32,11 @@ public class TripDBImpl implements TripDB {
     }
 
     @Override
+    public List<Trip> getByTraveler(Traveler traveler, int numberOfTrips) {
+        return tripRepository.findByTraveler(traveler, numberOfTrips);
+    }
+
+    @Override
     public List<Trip> getByTraveler(Traveler traveler) {
         return tripRepository.findByTraveler(traveler);
     }
@@ -50,5 +55,10 @@ public class TripDBImpl implements TripDB {
         trip.setLastModificationTime(new Date());
 
         tripRepository.save(trip);
+    }
+
+    @Override
+    public void removeByTraveler(Traveler traveler) {
+        tripRepository.removeAllTripsByTraveler(traveler);
     }
 }

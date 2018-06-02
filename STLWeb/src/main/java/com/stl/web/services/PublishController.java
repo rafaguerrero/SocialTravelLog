@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @Controller
-@RequestMapping(value = {"/trip"}, method = RequestMethod.POST)
+@RequestMapping(value = {"/trip"})
 public class PublishController {
 
     @Autowired
@@ -46,7 +46,7 @@ public class PublishController {
             return mav;
         }
 
-        return new ModelAndView("redirect:" + trip.getUrl());
+        return new ModelAndView("redirect:/stl" + trip.getUrl());
     }
 
     @RequestMapping(value = {"/{userId}"}, method = RequestMethod.GET)

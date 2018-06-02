@@ -29,9 +29,9 @@ public class TravelerRepositoryImpl implements TravelerRepository {
     }
 
     @Override
-    public void delete(String username) {
-        Assert.notNull(username, "Entity must not be null!");
+    public void delete(Traveler traveler) {
+        Assert.notNull(traveler, "Entity must not be null!");
 
-        mongoTemplate.remove(query(where("username").is(username)), Traveler.class);
+        mongoTemplate.remove(traveler);
     }
 }

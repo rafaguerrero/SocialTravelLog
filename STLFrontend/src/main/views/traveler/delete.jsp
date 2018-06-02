@@ -3,11 +3,16 @@
 <%@taglib prefix="structure" tagdir="/WEB-INF/tags/structure" %>
 
 <structure:body className="traveler traveler--delete" title="STL - Traveler Creation">
-    <form:form method="post" class="delete__form" modelAttribute="traveler">
+    <form:form method="POST" class="delete__form">
         <fieldset>
             <div class="creation__form__row">
                 <span>Are you sure you want to delete your account</span><br/>
-                <input type="hidden" name="user" vale="${user}" />
+            </div>
+            <div class="creation__form__row">
+                <input type='checkbox' name='deleteArticles'/>
+                <span>I want to delete all my articles too</span><br/>
+            </div>
+            <div class="creation__form__row">
                 <input type="submit" value="Yes" />
             </div>
         </fieldset>

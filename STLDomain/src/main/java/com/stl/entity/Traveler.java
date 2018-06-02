@@ -18,6 +18,8 @@ public class Traveler {
 
     String name;
 
+    TravelerStatus status = TravelerStatus.ACTIVE;
+
     public String getId() {
         return id;
     }
@@ -48,5 +50,13 @@ public class Traveler {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public TravelerStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(TravelerStatus status) {
+        this.status = status;
     }
 }
