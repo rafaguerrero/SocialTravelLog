@@ -47,12 +47,17 @@ public class TripRepositoryImpl implements TripRepository {
     }
 
     @Override
-    public List<Trip> findByTraveler(Traveler traveler) {
+    public List<Trip> findByTraveler(Traveler traveler, int numberOfTrips) {
         Query query = query(where("traveler").is(traveler));
         query.with(new Sort(Sort.Direction.DESC, "creationTime"));
-        query.limit(MAX_ARTICLES_PAGE);
+        query.limit(numberOfTrips);
 
         return mongoTemplate.find(query, Trip.class);
+    }
+
+    @Override
+    public List<Trip> findByTraveler(Traveler traveler) {
+        return findByTraveler(traveler, Integer.MAX_VALUE);
     }
 
     @Override
@@ -62,5 +67,10 @@ public class TripRepositoryImpl implements TripRepository {
         query.limit(MAX_ARTICLES_PAGE);
 
         return mongoTemplate.find(query, Trip.class);
+    }
+
+    @Override
+    public void removeAllTripsByTraveler(Traveler traveler) {
+        mongoTemplate.remove(query(where("traveler").is(traveler)), Trip.class);
     }
 }
