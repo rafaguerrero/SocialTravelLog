@@ -10,7 +10,8 @@ public interface TripRepository {
     Trip save(Trip trip);
 
     Trip findByUrl(String url);
-    List<Trip> findLatestByCreationDate();
+    List<Trip> findLatests();
+    List<Trip> findLatests(List<String> travelers);
     List<Trip> findByTraveler(Traveler traveler);
     List<Trip> findByTraveler(Traveler traveler, int numberOfTrips);
     List<Trip> findByTag(String tag);

@@ -26,14 +26,14 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="SocialTravelLog" target="1.6" />
-      <module name="STLDB" target="1.6" />
-      <module name="STLDomain" target="1.6" />
-      <module name="STLFrontend" target="1.6" />
-      <module name="STLHub" target="1.6" />
-      <module name="STLSecurity" target="1.6" />
-      <module name="STLTags" target="1.6" />
-      <module name="STLWeb" target="1.6" />
+      <module name="SocialTravelLog" target="1.8" />
+      <module name="STLDB" target="1.8" />
+      <module name="STLDomain" target="1.8" />
+      <module name="STLFrontend" target="1.8" />
+      <module name="STLHub" target="1.8" />
+      <module name="STLSecurity" target="1.8" />
+      <module name="STLTags" target="1.8" />
+      <module name="STLWeb" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

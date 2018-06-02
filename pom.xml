@@ -22,7 +22,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <compileSource>1.6</compileSource>
+        <compileSource>1.8</compileSource>
 
         <spring.version>4.3.14.RELEASE</spring.version>
         <spring.data.mongo.version>1.6.3.RELEASE</spring.data.mongo.version>

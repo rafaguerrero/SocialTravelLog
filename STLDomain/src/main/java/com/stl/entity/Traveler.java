@@ -5,6 +5,9 @@ import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Document
 public class Traveler {
     @Id
@@ -19,6 +22,8 @@ public class Traveler {
     String name;
 
     TravelerStatus status = TravelerStatus.ACTIVE;
+
+    List<String> following = new ArrayList<String>();
 
     public String getId() {
         return id;
@@ -58,5 +63,17 @@ public class Traveler {
 
     public void setStatus(TravelerStatus status) {
         this.status = status;
+    }
+
+    public List<String> getFollowing() {
+        return following;
+    }
+
+    public void follow(String traveler) {
+        this.following.add(traveler);
+    }
+
+    public void unfollow(String traveler) {
+        this.following.remove(traveler);
     }
 }

@@ -17,8 +17,13 @@ public class TripDBImpl implements TripDB {
     private TripRepository tripRepository;
 
     @Override
-    public List<Trip> getLatestTrips() {
-        return tripRepository.findLatestByCreationDate();
+    public List<Trip> getLatestsTrips() {
+        return tripRepository.findLatests();
+    }
+
+    @Override
+    public List<Trip> getLatestsTrips(List<String> travelers) {
+        return tripRepository.findLatests(travelers);
     }
 
     @Override

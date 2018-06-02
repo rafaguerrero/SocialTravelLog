@@ -61,8 +61,20 @@ public class TripRepositoryImpl implements TripRepository {
     }
 
     @Override
-    public List<Trip> findLatestByCreationDate() {
+    public List<Trip> findLatests() {
         Query query = new Query();
+        query.with(new Sort(Sort.Direction.DESC, "creationTime"));
+        query.limit(MAX_ARTICLES_PAGE);
+
+        return mongoTemplate.find(query, Trip.class);
+    }
+
+    @Override
+    public List<Trip> findLatests(List<String> travelersUsername) {
+        List<Traveler> travelers = mongoTemplate.find(query(where("username").in(travelersUsername)), Traveler.class);
+
+        Query query = new Query();
+        query.addCriteria(where("traveler").in(travelers));
         query.with(new Sort(Sort.Direction.DESC, "creationTime"));
         query.limit(MAX_ARTICLES_PAGE);
 
