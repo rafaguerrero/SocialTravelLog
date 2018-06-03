@@ -6,7 +6,9 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Document
 public class Traveler {
@@ -24,6 +26,7 @@ public class Traveler {
     TravelerStatus status = TravelerStatus.ACTIVE;
 
     List<String> following = new ArrayList<String>();
+    Map<String, Stars> rated = new HashMap<>();
 
     public String getId() {
         return id;
@@ -75,5 +78,13 @@ public class Traveler {
 
     public void unfollow(String traveler) {
         this.following.remove(traveler);
+    }
+
+    public Map<String, Stars> getRated() {
+        return rated;
+    }
+
+    public void rate(String trip, Stars stars) {
+        rated.put(trip, stars);
     }
 }

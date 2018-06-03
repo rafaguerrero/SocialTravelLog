@@ -7,7 +7,7 @@
 
 <structure:body className="traveler traveler--page" title="STL - ${traveler.name}">
 
-    <ui:follow />
+    <ui:follow/>
 
     <h1>${traveler.name}</h1>
 

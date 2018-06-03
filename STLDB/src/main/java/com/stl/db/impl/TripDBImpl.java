@@ -52,13 +52,18 @@ public class TripDBImpl implements TripDB {
         trip.setCreationTime(now);
         trip.setLastModificationTime(now);
 
-        tripRepository.save(trip);
+        save(trip);
     }
 
     @Override
     public void update(Trip trip) {
         trip.setLastModificationTime(new Date());
 
+        save(trip);
+    }
+
+    @Override
+    public void save(Trip trip) {
         tripRepository.save(trip);
     }
 

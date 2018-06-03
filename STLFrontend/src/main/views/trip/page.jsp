@@ -1,8 +1,11 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="structure" tagdir="/WEB-INF/tags/structure" %>
+<%@taglib prefix="ui" tagdir="/WEB-INF/tags/ui" %>
 
 <structure:body className="trip trip--page" title="STL - ${trip.title}">
     <h1>${trip.title}</h1>
+
+    <ui:rating/>
 
     <div class="trip__metadata">
         <div class="trip__metadata__traveler">

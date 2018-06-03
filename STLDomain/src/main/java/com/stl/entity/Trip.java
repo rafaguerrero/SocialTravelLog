@@ -26,6 +26,8 @@ public class Trip {
     private Date creationTime;
     private Date lastModificationTime;
 
+    private Rating rating = new Rating();
+
     public String getId() {
         return id;
     }
@@ -96,5 +98,13 @@ public class Trip {
 
     public void setLastModificationTime(Date lastModificationTime) {
         this.lastModificationTime = lastModificationTime;
+    }
+
+    public Rating getRating() {
+        return rating;
+    }
+
+    public void rate(Stars stars) {
+        rating.rate(stars);
     }
 }
