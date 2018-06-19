@@ -3,7 +3,9 @@ package com.stl.web.services;
 import com.stl.db.TravelerDB;
 import com.stl.db.TripDB;
 import com.stl.db.UserDB;
+import com.stl.security.StlRole;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
@@ -16,6 +18,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
+@PreAuthorize("hasRole('" + StlRole.TRAVELER + "')")
 @RequestMapping(value = "/d")
 public class DeleteController {
 

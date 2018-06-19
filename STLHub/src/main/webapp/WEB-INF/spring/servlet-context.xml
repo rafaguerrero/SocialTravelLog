@@ -6,6 +6,7 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:mongo="http://www.springframework.org/schema/data/mongo"
        xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:security="http://www.springframework.org/schema/security"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
             http://www.springframework.org/schema/beans/spring-beans.xsd
             http://www.springframework.org/schema/mvc
@@ -14,6 +15,8 @@
             http://www.springframework.org/schema/context/spring-context.xsd
             http://www.springframework.org/schema/util
             http://www.springframework.org/schema/util/spring-util.xsd
+            http://www.springframework.org/schema/security
+            http://www.springframework.org/schema/security/spring-security.xsd
             http://www.springframework.org/schema/data/mongo
             http://www.springframework.org/schema/data/mongo/spring-mongo.xsd">
 
@@ -23,6 +26,9 @@
 
     <mongo:repositories base-package="com.stl.domain"/>
     <mongo:auditing/>
+
+    <security:global-method-security pre-post-annotations="enabled"
+                            secured-annotations="enabled" />
 
     <!-- MongoDB conection -->
     <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">

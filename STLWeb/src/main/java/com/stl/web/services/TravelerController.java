@@ -3,7 +3,9 @@ package com.stl.web.services;
 import com.stl.db.TravelerDB;
 import com.stl.db.TripDB;
 import com.stl.entity.Traveler;
+import com.stl.security.StlRole;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletResponse;
 
 @Controller
-@RequestMapping(value = "/stl")
 public class TravelerController {
 
     @Autowired
@@ -22,8 +23,8 @@ public class TravelerController {
     @Autowired
     private TripDB tripDB;
 
-    @RequestMapping(value = "/{username}", method = RequestMethod.GET)
-    public ModelAndView getTravelerPage(@PathVariable String username,
+    @RequestMapping(value = "/stl/{username}", method = RequestMethod.GET)
+    public ModelAndView showTravelerPage(@PathVariable String username,
                                         HttpServletResponse response) {
 
         ModelAndView mav = new ModelAndView();
@@ -40,5 +41,13 @@ public class TravelerController {
         }
 
         return mav;
+    }
+
+    @PreAuthorize("hasRole('" + StlRole.TRAVELER + "')")
+    @RequestMapping(value = "/edit/{username}", method = RequestMethod.GET)
+    public ModelAndView editTravelerPage(@PathVariable String username,
+                                        HttpServletResponse response) {
+
+        return showTravelerPage(username, response);
     }
 }

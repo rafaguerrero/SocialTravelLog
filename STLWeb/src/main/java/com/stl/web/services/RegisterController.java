@@ -3,6 +3,7 @@ package com.stl.web.services;
 import com.stl.db.TravelerDB;
 import com.stl.db.UserDB;
 import com.stl.entity.Traveler;
+import com.stl.security.StlRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.security.core.userdetails.User;
@@ -46,7 +47,7 @@ public class RegisterController {
             try {
                 travelerDB.save(traveler);
 
-                User user = userService.createUserFromTraveler(traveler, "ROLE_USER");
+                User user = userService.createUserFromTraveler(traveler, StlRole.TRAVELER);
                 userDB.save(user);
 
                 userService.logIn(user);
