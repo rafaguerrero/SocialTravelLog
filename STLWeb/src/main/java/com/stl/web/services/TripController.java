@@ -4,7 +4,7 @@ import com.stl.db.TripDB;
 import com.stl.entity.Trip;
 import com.stl.security.StlRole;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,11 +39,27 @@ public class TripController {
     }
 
     @RequestMapping(value = "/edit/{username}/{path}")
-    @PreAuthorize("hasRole('" + StlRole.TRAVELER + "')")
+    @PostAuthorize("hasRole('" + StlRole.TRAVELER + "')")
     public ModelAndView editArticle(@PathVariable String username,
                                     @PathVariable String path,
                                     HttpServletResponse response) {
 
-        return showArticle(username, path, response);
+        ModelAndView mav = new ModelAndView();
+
+        Trip trip = getSecureTrip("/" + username + "/" + path);
+
+        if(trip != null) {
+            mav.addObject("trip", trip);
+            mav.setViewName("/trip/create");
+        } else {
+            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+        }
+
+        return mav;
+    }
+
+    @PostAuthorize("hasPermission(returnObject.getToken(), 'WRITE')")
+    private Trip getSecureTrip(String url) {
+        return tripDB.getByUrl(url);
     }
 }

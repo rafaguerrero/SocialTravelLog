@@ -10,13 +10,4 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>STLSecurity</artifactId>
-
-    <dependencies>
-        <dependency>
-            <groupId>com.stl</groupId>
-            <artifactId>STLDomain</artifactId>
-            <version>1.0</version>
-        </dependency>
-    </dependencies>
-
 </project>

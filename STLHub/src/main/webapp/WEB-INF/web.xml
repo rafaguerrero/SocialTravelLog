@@ -8,7 +8,9 @@
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
+            /WEB-INF/spring/ehcache-context.xml
             /WEB-INF/spring/security-context.xml
+            /WEB-INF/spring/security-acl-context.xml
         </param-value>
     </context-param>
 
@@ -24,6 +26,7 @@
             <param-name>contextConfigLocation</param-name>
             <param-value>
                 WEB-INF/spring/servlet-context.xml
+                WEB-INF/spring/persistence.xml
             </param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>

@@ -1,5 +1,7 @@
 package com.stl.entity;
 
+import com.stl.security.entity.Securable;
+import com.stl.security.entity.Token;
 import com.stl.utils.UrlUtils;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
@@ -10,7 +12,7 @@ import java.util.Date;
 import java.util.List;
 
 @Document
-public class Trip {
+public class Trip implements Securable {
     @Id
     protected String id;
 
@@ -19,6 +21,8 @@ public class Trip {
 
     @Indexed(unique = true)
     private String url;
+
+    private Token token;
 
     private String title;
     private String body;
@@ -106,5 +110,14 @@ public class Trip {
 
     public void rate(Stars stars) {
         rating.rate(stars);
+    }
+
+    @Override
+    public Token getToken() {
+        return token;
+    }
+
+    public void setToken(Token token) {
+        this.token = token;
     }
 }

@@ -1,8 +1,8 @@
 package com.stl.domain.impl;
 
 import com.stl.domain.TripRepository;
-import com.stl.entity.Trip;
 import com.stl.entity.Traveler;
+import com.stl.entity.Trip;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
