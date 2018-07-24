@@ -9,10 +9,6 @@
 
 <head>
     <title>${title}</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="/statics/main.js" async></script>
-    <style>
-        body {
-            display: none;
-        }
-    </style>
 </head>

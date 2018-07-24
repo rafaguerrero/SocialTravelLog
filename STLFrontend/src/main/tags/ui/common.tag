@@ -3,7 +3,7 @@
 
 <c:set var="user" value="${pageContext.request.userPrincipal}" scope="page"/>
 
-<div class="ui">
+<div id="ui">
     <div class="uiComponent topUiComponent">
         <c:import url="/WEB-INF/views/interface/header/default.jsp"/>
     </div>
@@ -13,6 +13,9 @@
             <li><a href="/?lateral=explore">Explore</a></li>
             <li>Tags</li>
             <li>Search</li>
+            <li id="test">
+                <todo-item></todo-item>
+            </li>
 
             <c:if test="${not empty user}">
                 <li><a href="/following/${user.name}">Fellow Travelers</a></li>
@@ -27,4 +30,5 @@
             Ad
         </div>
     </div>
+
 </div>
