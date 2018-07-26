@@ -45,12 +45,12 @@ public class RegisterController {
 
         } else {
             try {
-                travelerDB.save(traveler);
-
                 User user = userService.createUserFromTraveler(traveler, StlRole.TRAVELER);
                 userDB.save(user);
 
                 userService.logIn(user);
+
+                travelerDB.create(traveler);
 
                 mav.addObject("status", "success");
                 mav.addObject("traveler", traveler);

@@ -15,20 +15,5 @@
 package com.stl.security.entity;
 
 public interface Securable {
-
-    enum Type {
-        TRIP("TRIP");
-
-        private String label;
-
-        Type(String label) {
-            this.label = label;
-        }
-
-        public String getLabel() {
-            return label;
-        }
-    }
-
     Token getToken();
 }

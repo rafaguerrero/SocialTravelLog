@@ -1,5 +1,7 @@
 package com.stl.entity;
 
+import com.stl.security.entity.Securable;
+import com.stl.security.entity.SecurableImpl;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.index.Indexed;
@@ -11,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 @Document
-public class Traveler {
+public class Traveler extends SecurableImpl implements Securable {
     @Id
     protected String id;
 
