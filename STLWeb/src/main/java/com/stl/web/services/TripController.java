@@ -39,14 +39,14 @@ public class TripController {
     }
 
     @RequestMapping(value = "/edit/{username}/{path}")
-    @PostAuthorize("hasRole('" + StlRole.TRAVELER + "')")
+    @PostAuthorize("hasRole('" + StlRole.TRAVELER + "') AND hasPermission(returnObject.modelMap.get('trip').token, 'WRITE')")
     public ModelAndView editArticle(@PathVariable String username,
                                     @PathVariable String path,
                                     HttpServletResponse response) {
 
         ModelAndView mav = new ModelAndView();
 
-        Trip trip = getSecureTrip("/" + username + "/" + path);
+        Trip trip = tripDB.getByUrl("/" + username + "/" + path);
 
         if(trip != null) {
             mav.addObject("trip", trip);
@@ -56,10 +56,5 @@ public class TripController {
         }
 
         return mav;
-    }
-
-    @PostAuthorize("hasPermission(returnObject.getToken(), 'WRITE')")
-    private Trip getSecureTrip(String url) {
-        return tripDB.getByUrl(url);
     }
 }
