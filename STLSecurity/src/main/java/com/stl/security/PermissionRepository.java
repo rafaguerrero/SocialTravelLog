@@ -16,9 +16,10 @@ package com.stl.security;
 
 import com.stl.security.entity.Securable;
 import com.stl.security.entity.Token;
+import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.acls.model.Permission;
-import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 
 public interface PermissionRepository {
 
@@ -26,11 +27,11 @@ public interface PermissionRepository {
     Token createToken();
 
     @PreAuthorize("hasRole('" + StlRole.TRAVELER + "')")
-    boolean createPermission(User user, Securable securable);
+    Securable createPermission(UserDetails user, Securable securable);
 
-    @PreAuthorize("hasPermission(#securable.token, 'WRITE')")
-    boolean addPermission(User user, Securable securable, Permission permission);
+    @PostAuthorize("hasPermission(returnObject.token, 'WRITE')")
+    Securable addPermission(UserDetails user, Securable securable, Permission permission);
 
-    @PreAuthorize("hasPermission(#securable.token, 'WRITE')")
-    boolean removePermission(User user, Securable securable, Permission permission);
+    @PostAuthorize("hasPermission(returnObject.token, 'WRITE')")
+    Securable removePermission(UserDetails user, Securable securable, Permission permission);
 }

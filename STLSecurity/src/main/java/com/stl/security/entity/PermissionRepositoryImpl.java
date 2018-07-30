@@ -22,7 +22,7 @@ import org.springframework.security.acls.domain.ObjectIdentityImpl;
 import org.springframework.security.acls.domain.PrincipalSid;
 import org.springframework.security.acls.jdbc.JdbcMutableAclService;
 import org.springframework.security.acls.model.*;
-import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -49,29 +49,28 @@ public class PermissionRepositoryImpl implements PermissionRepository {
 
     @Override
     @Transactional
-    public boolean createPermission(User user, Securable securable) {
+    public Securable createPermission(UserDetails user, Securable securable) {
        return addPermission(user, securable, BasePermission.WRITE);
     };
 
     @Override
     @Transactional
-    public boolean addPermission(User user, Securable securable, Permission permission) {
+    public Securable addPermission(UserDetails user, Securable securable, Permission permission) {
         MutableAcl accessControlList = getAccessControlList(securable);
         Sid securityIdentity = new PrincipalSid(user.getUsername());
 
         accessControlList.insertAce(accessControlList.getEntries().size(), permission, securityIdentity, true);
         aclService.updateAcl(accessControlList);
 
-        return true;
+        return securable;
     };
 
     @Override
     @Transactional
-    public boolean removePermission(User user, Securable securable, Permission permission) {
+    public Securable removePermission(UserDetails user, Securable securable, Permission permission) {
         MutableAcl accessControlList = getAccessControlList(securable);
         Sid securityIdentity = new PrincipalSid(user.getUsername());
         List<AccessControlEntry> entries = accessControlList.getEntries();
-        boolean result = false;
 
         for (int i = 0; i < entries.size(); i++) {
             AccessControlEntry ace = entries.get(i);
@@ -81,14 +80,12 @@ public class PermissionRepositoryImpl implements PermissionRepository {
                 } catch (NotFoundException e) {
                     throw new AccessDeniedException(e.getMessage());
                 }
-
-                result = true;
             }
         }
 
         aclService.updateAcl(accessControlList);
 
-        return result;
+        return securable;
     }
 
     private MutableAcl getAccessControlList(Securable securable) {

@@ -46,7 +46,7 @@ public class RegisterController {
         } else {
             try {
                 User user = userService.createUserFromTraveler(traveler, StlRole.TRAVELER);
-                userDB.save(user);
+                userDB.create(user);
 
                 userService.logIn(user);
 
