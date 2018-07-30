@@ -15,7 +15,6 @@ public interface TripDB {
 
     void create(Trip trip);
     void update(Trip trip);
-    void save(Trip trip);
 
     void removeByTraveler(Traveler traveler);
 }

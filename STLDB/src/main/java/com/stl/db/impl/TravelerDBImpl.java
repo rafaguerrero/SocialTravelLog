@@ -5,7 +5,11 @@ import com.stl.db.TripDB;
 import com.stl.domain.TravelerRepository;
 import com.stl.entity.Traveler;
 import com.stl.entity.TravelerStatus;
+import com.stl.security.PermissionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -16,13 +20,32 @@ public class TravelerDBImpl implements TravelerDB {
     @Autowired
     private TripDB tripDB;
 
+    @Autowired
+    private PermissionRepository permissionRepository;
+
     @Override
     public Traveler getByUsername(String username) {
         return travelerRepository.findByUsername(username);
     }
 
     @Override
-    public void save(Traveler traveler) {
+    public void create(Traveler traveler) {
+        traveler.setToken(permissionRepository.createToken());
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User user = (User) authentication.getPrincipal();
+
+        permissionRepository.createPermission(user, traveler);
+
+        save(traveler);
+    }
+
+    @Override
+    public void update(Traveler traveler) {
+        save(traveler);
+    }
+
+    private void save(Traveler traveler) {
         travelerRepository.save(traveler);
     }
 

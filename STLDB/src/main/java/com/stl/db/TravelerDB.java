@@ -5,6 +5,7 @@ import com.stl.entity.Traveler;
 public interface TravelerDB {
     Traveler getByUsername(String username);
 
-    void save(Traveler traveler);
+    void create(Traveler traveler);
+    void update(Traveler traveler);
     void delete(String username, boolean deleteArticles);
 }

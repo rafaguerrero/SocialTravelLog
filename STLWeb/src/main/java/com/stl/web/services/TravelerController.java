@@ -5,7 +5,7 @@ import com.stl.db.TripDB;
 import com.stl.entity.Traveler;
 import com.stl.security.StlRole;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,7 +43,7 @@ public class TravelerController {
         return mav;
     }
 
-    @PreAuthorize("hasRole('" + StlRole.TRAVELER + "')")
+    @PostAuthorize("hasRole('" + StlRole.TRAVELER + "') AND hasPermission(returnObject.modelMap.get('traveler').token, 'WRITE')")
     @RequestMapping(value = "/edit/{username}", method = RequestMethod.GET)
     public ModelAndView editTravelerPage(@PathVariable String username,
                                         HttpServletResponse response) {

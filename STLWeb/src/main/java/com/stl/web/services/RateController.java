@@ -43,11 +43,11 @@ public class RateController {
 
         Trip trip = tripDB.getByUrl(url);
         trip.rate(stars);
-        tripDB.save(trip);
+        tripDB.update(trip);
 
         Traveler traveler = getLoggedTraveler(authentication);
         traveler.rate(trip.getId(), stars);
-        travelerDB.save(traveler);
+        travelerDB.update(traveler);
 
         return new ModelAndView("redirect:/stl" + url);
     }

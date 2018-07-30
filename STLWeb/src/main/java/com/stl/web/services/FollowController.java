@@ -35,7 +35,7 @@ public class FollowController {
 
         Traveler traveler = getLoggedTraveler(authentication);
         traveler.follow(username);
-        travelerDB.save(traveler);
+        travelerDB.update(traveler);
 
         return new ModelAndView("redirect:/stl/" + username);
     }
@@ -46,7 +46,7 @@ public class FollowController {
 
         Traveler traveler = getLoggedTraveler(authentication);
         traveler.unfollow(username);
-        travelerDB.save(traveler);
+        travelerDB.update(traveler);
 
         return new ModelAndView("redirect:/stl/" + username);
     }

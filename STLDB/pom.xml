@@ -19,5 +19,10 @@
             <artifactId>STLDomain</artifactId>
             <version>1.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.stl</groupId>
+            <artifactId>STLSecurity</artifactId>
+            <version>1.0</version>
+        </dependency>
     </dependencies>
 </project>
